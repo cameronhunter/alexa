@@ -7,7 +7,7 @@ chainable interface to simplify building complex responses.
 
 ## API
 
-### ask(speech: String, type: Optional<PlainText|SSML>)
+### ask(speech: String, type: Optional\<PlainText|SSML\>)
 
 Alexa can ask questions to users and will wait for their responses. The
 parameters passed to this function can be plain text or [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference).
@@ -20,7 +20,7 @@ Response.ask('What would like me to ask?').build();
 Response.ask('<p>I can also ask questions in SSML! How do you like that?</p>', 'SSML').build();
 ```
 
-### say(speech: String, type: Optional<PlainText|SSML>)
+### say(speech: String, type: Optional\<PlainText|SSML\>)
 
 This is similar to `ask` except that it closes the current session. The
 parameters passed to this function can be plain text or [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference).
@@ -33,7 +33,7 @@ Response.say('I can say whatever you want me to!').build();
 Response.say('<p>I can also speak SSML!</p>', 'SSML').build();
 ```
 
-### reprompt(speech: String, type: Optional<PlainText|SSML>)
+### reprompt(speech: String, type: Optional\<PlainText|SSML\>)
 
 If Alexa doesn't pick up the answer to a question then the reprompt text will be
 used. The parameters passed to this function can be plain text or [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference).
@@ -65,7 +65,7 @@ Reponse.ask("What's your favorite color?")
        .build();
 ```
 
-### build(attributes: Optional<Object>)
+### build(attributes: Optional\<Object\>)
 
 Responses have a chainable API, when you want to finalize the response, call
 `build`.
