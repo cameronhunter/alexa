@@ -16,10 +16,6 @@ parameters passed to this function can be plain text or [SSML](https://developer
 Response.ask('What would like me to ask?').build();
 ```
 
-```javascript
-Response.ask('<speak><p>I can also ask questions in SSML! How do you like that?</p></speak>', 'SSML').build();
-```
-
 ### say(speech: String, type: Optional\<PlainText|SSML\>)
 
 This is similar to `ask` except that it closes the current session. The
@@ -27,10 +23,6 @@ parameters passed to this function can be plain text or [SSML](https://developer
 
 ```javascript
 Response.say('I can say whatever you want me to!').build();
-```
-
-```javascript
-Response.say('<speak><p>I can also speak SSML!</p></speak>', 'SSML').build();
 ```
 
 ### reprompt(speech: String, type: Optional\<PlainText|SSML\>)
@@ -80,9 +72,8 @@ Response.say("I've put the answer to your question on your phone")
 
 You can use [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
 directly by including `babel-plugin-transform-react-jsx` in your `.babelrc` and
-importing `ssml` from `[alexa-ssml](https://github.com/nickclaw/alexa-ssml)` in your source file.
+importing `ssml` from [`alexa-ssml`](https://github.com/nickclaw/alexa-ssml) in your source file.
 
-`.babelrc`:
 ```json
 {
   "plugins": [
@@ -95,12 +86,5 @@ importing `ssml` from `[alexa-ssml](https://github.com/nickclaw/alexa-ssml)` in 
 import Response from 'alexa-response';
 import { ssml } from 'alexa-ssml';
 
-const speech = (
-  <speak>
-    <p>Hello World!</p>
-    <p>What would you like to do today?</p>
-  </speak>
-);
-
-Response.ask(speech).build();
+Response.ask(<speak><p>Hello world!</p><p>What would you like to do today?</p></speak>).build();
 ```
