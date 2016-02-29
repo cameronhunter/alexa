@@ -1,5 +1,7 @@
 # Alexa Response
 
+[![Build Status](https://travis-ci.org/cameronhunter/alexa-response.svg?branch=master)](https://travis-ci.org/cameronhunter/alexa-response) [![NPM Version](https://img.shields.io/npm/v/alexa-response.svg)](https://npmjs.org/package/alexa-response) [![License](https://img.shields.io/npm/l/alexa-response.svg)](https://github.com/cameronhunter/alexa-response/blob/master/LICENSE.md)
+
 Build JSON responses for Amazon Alexa, easily. Alexa Response makes use of a
 chainable interface to simplify building complex responses.
 
