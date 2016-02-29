@@ -90,3 +90,10 @@ const outputSpeech = (text, type = PlainText) => {
     return { outputSpeech: { type, text } };
   }
 };
+
+// For commonjs compatibility
+export const ask = Response.ask;
+export const say = Response.say;
+export const card = Response.card;
+export const reprompt = Response.reprompt;
+export const shouldEndSession = Response.shouldEndSession;
