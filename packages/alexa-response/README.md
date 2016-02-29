@@ -17,7 +17,7 @@ Response.ask('What would like me to ask?').build();
 ```
 
 ```javascript
-Response.ask('<p>I can also ask questions in SSML! How do you like that?</p>', 'SSML').build();
+Response.ask('<speak><p>I can also ask questions in SSML! How do you like that?</p></speak>', 'SSML').build();
 ```
 
 ### say(speech: String, type: Optional\<PlainText|SSML\>)
@@ -30,7 +30,7 @@ Response.say('I can say whatever you want me to!').build();
 ```
 
 ```javascript
-Response.say('<p>I can also speak SSML!</p>', 'SSML').build();
+Response.say('<speak><p>I can also speak SSML!</p></speak>', 'SSML').build();
 ```
 
 ### reprompt(speech: String, type: Optional\<PlainText|SSML\>)
@@ -74,4 +74,33 @@ Responses have a chainable API, when you want to finalize the response, call
 Response.say("I've put the answer to your question on your phone")
         .card('Question and Answer', "Here's the answer to your question")
         .build();
+```
+
+## Inline SSML
+
+You can use [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
+directly by including `babel-plugin-transform-react-jsx` in your `.babelrc` and
+importing `ssml` from `[alexa-ssml](https://github.com/nickclaw/alexa-ssml)` in your source file.
+
+`.babelrc`:
+```json
+{
+  "plugins": [
+    ["transform-react-jsx", { "pragma": "ssml" }]
+  ]
+}
+```
+
+```javascript
+import Response from 'alexa-response';
+import { ssml } from 'alexa-ssml';
+
+const speech = (
+  <speak>
+    <p>Hello World!</p>
+    <p>What would you like to do today?</p>
+  </speak>
+);
+
+Response.ask(speech).build();
 ```

@@ -85,7 +85,7 @@ export default class Response {
 
 const outputSpeech = (text, type = PlainText) => {
   if (type === SSML || typeof text === 'object') {
-    return { outputSpeech: { type, ssml: (typeof text === 'object') ? renderToString(text) : text } };
+    return { outputSpeech: { type: SSML, ssml: (typeof text === 'object') ? renderToString(text) : text } };
   } else {
     return { outputSpeech: { type, text } };
   }
