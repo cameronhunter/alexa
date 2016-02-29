@@ -1,3 +1,5 @@
+import { renderToString } from 'alexa-ssml';
+
 export const SSML = 'SSML';
 export const PlainText = 'PlainText';
 export const Simple = 'Simple';
@@ -82,10 +84,9 @@ export default class Response {
 }
 
 const outputSpeech = (text, type = PlainText) => {
-  switch (type) {
-    case SSML:
-      return { outputSpeech: { type, ssml: `<speak>${text}</speak>` } };
-    default:
-      return { outputSpeech: { type, text } };
+  if (type === SSML || typeof text === 'object') {
+    return { outputSpeech: { type, ssml: (typeof text === 'object') ? renderToString(text) : text } };
+  } else {
+    return { outputSpeech: { type, text } };
   }
 };

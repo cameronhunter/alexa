@@ -10,7 +10,7 @@ test('ask', t => {
     }
   });
 
-  t.same(Response.ask('<p>Hello World.</p> <p>What do you want to do today?</p>', 'SSML').build(), {
+  t.same(Response.ask('<speak><p>Hello World.</p> <p>What do you want to do today?</p></speak>', 'SSML').build(), {
     version: '1.0',
     response: {
       shouldEndSession: false,
@@ -28,7 +28,7 @@ test('say', t => {
     }
   });
 
-  t.same(Response.say('<p>Hello World.</p> <p>What do you want to do today?</p>', 'SSML').build(), {
+  t.same(Response.say('<speak><p>Hello World.</p> <p>What do you want to do today?</p></speak>', 'SSML').build(), {
     version: '1.0',
     response: {
       shouldEndSession: true,
