@@ -11,9 +11,12 @@ test('ask', t => {
     }
   });
 
-  // TODO: Replace with SSML markup when issue #448 is merged into AVA (https://github.com/sindresorhus/ava/issues/448)
-  const speech = ssml('speak', null, ssml('p', null, 'Hello World.'), ' ', ssml('p', null, 'What do you want to do today?'));
-  console.log(JSON.stringify(Response.ask(speech).build(), null, 2));
+  const speech = (
+    <speak>
+      <p>Hello World.</p> <p>What do you want to do today?</p>
+    </speak>
+  );
+
   t.same(Response.ask(speech).build(), {
     version: '1.0',
     response: {
@@ -32,8 +35,12 @@ test('say', t => {
     }
   });
 
-  // TODO: Replace with SSML markup when issue #448 is merged into AVA (https://github.com/sindresorhus/ava/issues/448)
-  const speech = ssml('speak', null, ssml('p', null, 'Hello World.'), ' ', ssml('p', null, 'What do you want to do today?'));
+  const speech = (
+    <speak>
+      <p>Hello World.</p> <p>What do you want to do today?</p>
+    </speak>
+  );
+
   t.same(Response.say(speech).build(), {
     version: '1.0',
     response: {

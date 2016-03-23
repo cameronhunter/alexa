@@ -3,6 +3,6 @@
   "rules": {
     "semi": [2, "always"],
     "quotes": [2, "single"],
-    "no-unused-vars": [2]
+    "no-unused-vars": [2, { "varsIgnorePattern": "^ssml$" }]
   }
 }

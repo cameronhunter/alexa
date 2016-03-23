@@ -43,5 +43,8 @@
     "rollup": "^0.25.4",
     "rollup-plugin-babel": "^2.4.0",
     "rollup-plugin-uglify": "^0.2.0"
+  },
+  "ava": {
+    "babel": "inherit"
   }
 }
