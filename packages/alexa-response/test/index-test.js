@@ -96,7 +96,7 @@ test('shouldEndSession', t => {
 
 test('chaining', t => {
   const response = Response.say('Hello')
-                           .card({ title: 'Title', content: 'Content'})
+                           .card({ title: 'Title', content: 'Content' })
                            .shouldEndSession(false)
                            .reprompt('Reprompt')
                            .build();
