@@ -36,14 +36,14 @@ Response.ask('What would you like me to ask?')
         .build();
 ```
 
-### card(title: String, content: String)
+### card(options: Object)
 
 Cards show up in the Alexa app. Simple cards have titles and content, you can
-pass an optional third parameter for different card types.
+pass an optional `type` for different card types.
 
 ```javascript
 Response.say("I've put the answer to your question on your phone")
-        .card('Question and Answer', "Here's the answer to your question")
+        .card({ title: 'Question and Answer', content: "Here's the answer to your question" })
         .build();
 ```
 
@@ -64,7 +64,7 @@ Responses have a chainable API, when you want to finalize the response, call
 
 ```javascript
 Response.say("I've put the answer to your question on your phone")
-        .card('Question and Answer', "Here's the answer to your question")
+        .card({ title: 'Question and Answer', content: "Here's the answer to your question" })
         .build();
 ```
 

@@ -13,11 +13,12 @@ test('ask', t => {
 
   // TODO: Replace with SSML markup when issue #448 is merged into AVA (https://github.com/sindresorhus/ava/issues/448)
   const speech = ssml('speak', null, ssml('p', null, 'Hello World.'), ' ', ssml('p', null, 'What do you want to do today?'));
+  console.log(JSON.stringify(Response.ask(speech).build(), null, 2));
   t.same(Response.ask(speech).build(), {
     version: '1.0',
     response: {
       shouldEndSession: false,
-      outputSpeech: { type: 'SSML', ssml: '<speak>\n  <p/>\n  Hello World.\n   \n  <p/>\n  What do you want to do today?\n</speak>' }
+      outputSpeech: { type: 'SSML', ssml: '<speak><p/>Hello World. <p/>What do you want to do today?</speak>' }
     }
   });
 });
@@ -37,13 +38,13 @@ test('say', t => {
     version: '1.0',
     response: {
       shouldEndSession: true,
-      outputSpeech: { type: 'SSML', ssml: '<speak>\n  <p/>\n  Hello World.\n   \n  <p/>\n  What do you want to do today?\n</speak>' }
+      outputSpeech: { type: 'SSML', ssml: '<speak><p/>Hello World. <p/>What do you want to do today?</speak>' }
     }
   });
 });
 
 test('card', t => {
-  t.same(Response.card('Title', 'This is the card content').build(), {
+  t.same(Response.card({ title: 'Title', content: 'This is the card content'}).build(), {
     version: '1.0',
     response: {
       shouldEndSession: true,
@@ -51,7 +52,7 @@ test('card', t => {
     }
   });
 
-  t.same(Response.card('Title', 'This is the card content', 'CustomCardType').build(), {
+  t.same(Response.card({ title: 'Title', content: 'This is the card content', type: 'CustomCardType'}).build(), {
     version: '1.0',
     response: {
       shouldEndSession: true,
@@ -87,7 +88,13 @@ test('shouldEndSession', t => {
 });
 
 test('chaining', t => {
-  t.same(Response.say('Hello').card('Title', 'Content').shouldEndSession(false).reprompt('Reprompt').build(), {
+  const response = Response.say('Hello')
+                           .card({ title: 'Title', content: 'Content'})
+                           .shouldEndSession(false)
+                           .reprompt('Reprompt')
+                           .build();
+
+  t.same(response, {
     version: '1.0',
     response: {
       shouldEndSession: false,

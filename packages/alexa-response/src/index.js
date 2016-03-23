@@ -1,8 +1,14 @@
 import { renderToString } from 'alexa-ssml';
 
-export const SSML = 'SSML';
-export const PlainText = 'PlainText';
-export const Simple = 'Simple';
+export const CardType = {
+  LinkAccount: 'LinkAccount',
+  Simple: 'Simple'
+};
+
+export const SpeechType = {
+  PlainText: 'PlainText',
+  SSML: 'SSML'
+};
 
 export default class Response {
   static ask = (...args) => new Response().ask(...args);
@@ -40,12 +46,16 @@ export default class Response {
     });
   }
 
-  card(title, content, type = Simple) {
+  card({ title, content, type = CardType.Simple }) {
     return new Response({
       ...this.state,
       response: {
         ...this.state.response,
-        card: { type, title, content }
+        card: {
+          ...(type && { type }),
+          ...(title && { title }),
+          ...(content && { content })
+        }
       }
     });
   }
@@ -83,9 +93,10 @@ export default class Response {
   }
 }
 
-const outputSpeech = (text, type = PlainText) => {
-  if (type === SSML || typeof text === 'object') {
-    return { outputSpeech: { type: SSML, ssml: (typeof text === 'object') ? renderToString(text) : text } };
+const outputSpeech = (text, type = SpeechType.PlainText) => {
+  if (type === SpeechType.SSML || typeof text === 'object') {
+    const speech = (typeof text === 'object') ? renderToString(text) : text;
+    return { outputSpeech: { type: SpeechType.SSML, ssml: speech } };
   } else {
     return { outputSpeech: { type, text } };
   }

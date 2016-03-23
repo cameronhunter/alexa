@@ -28,11 +28,11 @@
     "lambda"
   ],
   "dependencies": {
-    "alexa-ssml": "^0.3.2"
+    "alexa-ssml": "^0.5.0"
   },
   "devDependencies": {
-    "ava": "^0.12.0",
-    "babel-eslint": "^5.0.0",
+    "ava": "^0.13.0",
+    "babel-eslint": "^6.0.0-beta.6",
     "babel-plugin-transform-react-jsx": "^6.5.2",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-es2015-rollup": "^1.1.1",
