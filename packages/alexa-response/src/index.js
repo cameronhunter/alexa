@@ -2,7 +2,8 @@ import { renderToString } from 'alexa-ssml';
 
 export const CardType = {
   LinkAccount: 'LinkAccount',
-  Simple: 'Simple'
+  Simple: 'Simple',
+  Standard: 'Standard'
 };
 
 export const SpeechType = {
@@ -46,15 +47,14 @@ export default class Response {
     });
   }
 
-  card({ title, content, type = CardType.Simple }) {
+  card({ type = CardType.Simple, ...rest }) {
     return new Response({
       ...this.state,
       response: {
         ...this.state.response,
         card: {
+          ...rest,
           ...(type && { type }),
-          ...(title && { title }),
-          ...(content && { content })
         }
       }
     });
