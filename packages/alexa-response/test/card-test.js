@@ -3,7 +3,7 @@ import { card } from '../src';
 import { ssml } from 'alexa-ssml';
 
 test('Simple', t => {
-  t.same(card({ title: 'Title', content: 'This is the card content' }).build(), {
+  t.deepEqual(card({ title: 'Title', content: 'This is the card content' }).build(), {
     version: '1.0',
     response: {
       shouldEndSession: true,
@@ -13,7 +13,7 @@ test('Simple', t => {
 });
 
 test('LinkAccount', t => {
-  t.same(card({ type: 'LinkAccount' }).build(), {
+  t.deepEqual(card({ type: 'LinkAccount' }).build(), {
     version: '1.0',
     response: {
       shouldEndSession: true,

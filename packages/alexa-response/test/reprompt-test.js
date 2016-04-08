@@ -3,7 +3,7 @@ import { reprompt } from '../src';
 import { ssml } from 'alexa-ssml';
 
 test('PlainText', t => {
-  t.same(reprompt('Can you repeat that?').build(), {
+  t.deepEqual(reprompt('Can you repeat that?').build(), {
     version: '1.0',
     response: {
       shouldEndSession: true,
@@ -13,7 +13,7 @@ test('PlainText', t => {
 });
 
 test('SSML', t => {
-  t.same(reprompt(<speak>Can you repeat that?</speak>).build(), {
+  t.deepEqual(reprompt(<speak>Can you repeat that?</speak>).build(), {
     version: '1.0',
     response: {
       shouldEndSession: true,

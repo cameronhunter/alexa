@@ -3,7 +3,7 @@ import { ask } from '../src';
 import { ssml } from 'alexa-ssml';
 
 test('PlainText', t => {
-  t.same(ask('Hello world').build(), {
+  t.deepEqual(ask('Hello world').build(), {
     version: '1.0',
     response: {
       shouldEndSession: false,
@@ -19,7 +19,7 @@ test('SSML', t => {
     </speak>
   );
 
-  t.same(ask(speech).build(), {
+  t.deepEqual(ask(speech).build(), {
     version: '1.0',
     response: {
       shouldEndSession: false,

@@ -8,7 +8,7 @@ test('chaining', t => {
                            .reprompt('Reprompt')
                            .build();
 
-  t.same(response, {
+  t.deepEqual(response, {
     version: '1.0',
     response: {
       shouldEndSession: false,

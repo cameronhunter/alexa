@@ -1,4 +1,4 @@
-import { renderToString } from 'alexa-ssml';
+import { ssml, renderToString } from 'alexa-ssml';
 
 export const CardType = {
   LinkAccount: 'LinkAccount',
@@ -17,6 +17,19 @@ export default class Response {
   static card = (...args) => new Response().card(...args);
   static reprompt = (...args) => new Response().reprompt(...args);
   static shouldEndSession = (...args) => new Response().shouldEndSession(...args);
+  static build = (params) => Object.keys(params).reduce((response, action) => {
+    const options = params[action];
+    const text = typeof options === 'string' ? options : options;
+    const type = typeof options === 'string' ? undefined : options.type;
+    switch (action) {
+      case 'ask': return response.ask(text, type);
+      case 'say': return response.say(text, type);
+      case 'reprompt': return response.reprompt(text, type);
+      case 'card': return response.card(options);
+      case 'attributes': return response.attributes(options);
+      case 'shouldEndSession': return response.shouldEndSession(options);
+    }
+  }, new Response());
 
   constructor(state = {}) {
     this.state = state;
