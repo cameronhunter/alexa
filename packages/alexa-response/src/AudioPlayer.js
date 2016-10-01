@@ -1,13 +1,7 @@
-const AudioPlayer = {
-    Play: 'AudioPlayer.Play',
-    Stop: 'AudioPlayer.Stop',
-    ClearQueue: 'AudioPlayer.ClearQueue'
-};
-
 export default {
     play(stream) {
         return {
-            type: AudioPlayer.Play,
+            type: 'AudioPlayer.Play',
             playBehavior: 'REPLACE_ALL',
             audioItem: { stream }
         };
@@ -15,7 +9,7 @@ export default {
 
     enqueue(stream, replaceQueue = false) {
         return {
-            type: AudioPlayer.Play,
+            type: 'AudioPlayer.Play',
             playBehavior: replaceQueue ? 'REPLACE_ENQUEUED' : 'ENQUEUE',
             audioItem: { stream }
         };
@@ -23,13 +17,13 @@ export default {
 
     stop() {
         return {
-            type: AudioPlayer.Stop
+            type: 'AudioPlayer.Stop'
         };
     },
 
     clearQueue(stopCurrent = false) {
         return {
-            type: AudioPlayer.ClearQueue,
+            type: 'AudioPlayer.ClearQueue',
             clearBehavior: stopCurrent ? 'CLEAR_ALL' : 'CLEAR_ENQUEUED'
         };
     }
