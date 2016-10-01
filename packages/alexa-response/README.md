@@ -53,8 +53,20 @@ Response.say("I've put the answer to your question on your phone")
 You can maintain data across sessions using attribute data.
 
 ```javascript
-Reponse.ask("What's your favorite color?")
+Response.ask("What's your favorite color?")
        .attributes({ question_asked: true })
+       .build();
+```
+
+### directives(directives: ...Directive)
+
+Used to add directives to the response. A helper is provided to build an audio
+directive, however, any directive can be used. This function accepts multiple
+directives.
+
+```javascript
+Response.say("Playing audio")
+       .directives(AudioPlayer.play({ url: 'https://stream.com/my-stream.mp3' }))
        .build();
 ```
 
