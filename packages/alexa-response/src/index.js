@@ -17,6 +17,8 @@ export default class Response {
   static card = (...args) => new Response().card(...args);
   static reprompt = (...args) => new Response().reprompt(...args);
   static shouldEndSession = (...args) => new Response().shouldEndSession(...args);
+  static directive = (...args) => new Response().directive(...args);
+
   static build = (params) => Object.keys(params).reduce((response, action) => {
     const options = params[action];
     const text = typeof options === 'string' ? options : options;
@@ -28,6 +30,7 @@ export default class Response {
       case 'card': return response.card(options);
       case 'attributes': return response.attributes(options);
       case 'shouldEndSession': return response.shouldEndSession(options);
+      case 'directive': return response.directive(options);
     }
   }, new Response());
 
@@ -93,6 +96,18 @@ export default class Response {
     });
   }
 
+  directive(directive, ...rest) {
+    const directives = Array.isArray(directive) ? directive : [directive, ...rest];
+    const { directives: previousDirectives = [] } = this.state.response || {};
+    return new Response({
+      ...this.state,
+      response: {
+        ...this.state.response,
+        directives: [...previousDirectives, ...directives]
+      }
+    });
+  }
+
   build(attributes) {
     return {
       version: '1.0',
@@ -121,4 +136,5 @@ export const say = Response.say;
 export const card = Response.card;
 export const reprompt = Response.reprompt;
 export const shouldEndSession = Response.shouldEndSession;
+export const directive = Response.directive;
 export const build = Response.build;
