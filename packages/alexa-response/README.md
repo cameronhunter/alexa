@@ -81,6 +81,22 @@ Response.say("I've put the answer to your question on your phone")
         .build();
 ```
 
+### AudioPlayer
+
+This helper is provided to build `AudioPlayer` directives.
+
+```javascript
+import Response, { AudioPlayer } from 'alexa-response';
+
+const { play, enqueue, stop, clearQueue } = AudioPlayer;
+
+Response.directives(
+          play({ url: 'https://stream.com/my-stream-1.mp3' }),
+          enqueue({ url: 'https://stream.com/my-stream-2.mp3' })
+        )
+        .build();
+```
+
 ## Inline SSML
 
 You can use [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
