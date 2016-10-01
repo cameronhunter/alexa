@@ -1,9 +1,9 @@
 import test from 'ava';
-import { directive, AudioPlayer } from '../src';
+import { directives, AudioPlayer } from '../src';
 import { ssml } from 'alexa-ssml';
 
 test('Add single directive', t => {
-  t.deepEqual(directive(AudioPlayer.stop()).build(), {
+  t.deepEqual(directives(AudioPlayer.stop()).build(), {
     version: '1.0',
     response: {
       shouldEndSession: true,
@@ -15,7 +15,7 @@ test('Add single directive', t => {
 });
 
 test('Add multiple directives', t => {
-  const actual = directive(
+  const actual = directives(
     AudioPlayer.play({ url: 'http://stream-1.url' }),
     AudioPlayer.enqueue({ url: 'http://stream-2.url' })
   );

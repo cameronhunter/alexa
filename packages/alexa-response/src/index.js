@@ -14,5 +14,5 @@ export const say = Response.say;
 export const card = Response.card;
 export const reprompt = Response.reprompt;
 export const shouldEndSession = Response.shouldEndSession;
-export const directive = Response.directive;
+export const directives = Response.directives;
 export const build = Response.build;
