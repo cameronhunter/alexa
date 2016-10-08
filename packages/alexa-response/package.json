@@ -5,11 +5,7 @@
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
   "main": "build/index.min.js",
-  "jsnext:main": "src/index.js",
   "scripts": {
-    "build:dev": "rollup -c",
-    "build:production": "NODE_ENV=production rollup -c",
-    "build": "npm-run-all --parallel build:dev build:production",
     "test": "ava --require babel-register",
     "posttest": "npm run lint",
     "lint": "eslint src/ test/",

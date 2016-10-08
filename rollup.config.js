@@ -7,7 +7,7 @@ const nonNull = array => array.filter(Boolean);
 
 export default {
   entry: 'src/index.js',
-  dest: isProduction ? 'index.min.js' : 'index.js',
+  dest: isProduction ? './build/index.min.js' : './build/index.js',
   format: 'cjs',
   plugins: nonNull([
     babel({

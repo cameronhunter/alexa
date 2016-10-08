@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "build": "lerna exec -- rollup --config --output ./build"
+    "build:dev": "lerna exec -- rollup --config ../../rollup.config.js",
+    "build:production": "NODE_ENV=production lerna exec -- rollup --config ../../rollup.config.js",
+    "build": "npm-run-all --parallel build:dev build:production"
   },
   "devDependencies": {
     "alexa-response": "^3.2.0",
