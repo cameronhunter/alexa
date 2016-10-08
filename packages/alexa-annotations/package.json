@@ -1,0 +1,43 @@
+{
+  "author": {
+    "name": "Cameron Hunter",
+    "email": "hello@cameronhunter.co.uk",
+    "url": "http://cameronhunter.co.uk"
+  },
+  "name": "alexa-annotations",
+  "description": "Create Alexa skills for the Amazon Echo, easily.",
+  "version": "7.0.1",
+  "main": "build/index.min.js",
+  "jsnext:main": "src/index.js",
+  "license": "MIT",
+  "repository": "cameronhunter/alexa-lambda-skill",
+  "files": [
+    "build",
+    "src"
+  ],
+  "scripts": {
+    "build:dev": "rollup -c",
+    "build:production": "NODE_ENV=production rollup -c",
+    "build": "npm-run-all --parallel build:dev build:production",
+    "pretest": "npm run build",
+    "test": "ava --require babel-register --require babel-polyfill ./test/**/*test.js ./example/**/*test.js",
+    "posttest": "npm run lint",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags",
+    "lint": "eslint src/**/*.js example/**/*.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "object-values": "^1.0.0"
+  },
+  "keywords": [
+    "alexa",
+    "echo",
+    "skill",
+    "amazon",
+    "lambda"
+  ],
+  "ava": {
+    "babel": "inherit"
+  }
+}
