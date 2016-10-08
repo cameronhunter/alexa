@@ -5,7 +5,9 @@
     "build": "npm-run-all --parallel build:dev build:production",
     "test": "ava --require babel-register ./packages/*/test/*test.js ./packages/*/example/*test.js",
     "posttest": "npm run lint",
-    "lint": "eslint ./packages/**/src/*.js ./packages/**/src/**/*.js ./packages/**/test/**/*.js ./packages/**/example/**/*.js"
+    "lint": "eslint ./packages/**/src/*.js ./packages/**/src/**/*.js ./packages/**/test/**/*.js ./packages/**/example/**/*.js",
+    "prepublish": "npm run test",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "alexa-response": "^3.2.0",
