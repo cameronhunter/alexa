@@ -1,5 +1,5 @@
 import test from 'ava';
-import Request from '../../src/Request';
+import Request from 'alexa-request';
 import HistoryBuff from './index';
 
 test('launch', t => {

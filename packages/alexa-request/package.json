@@ -1,7 +1,7 @@
 {
-  "name": "alexa-response",
-  "version": "3.2.0",
-  "description": "Build JSON responses for Amazon Alexa, easily.",
+  "name": "alexa-request",
+  "version": "0.0.0",
+  "description": "Build JSON requests for Amazon Alexa, easily.",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
   "main": "build/index.min.js",
@@ -15,8 +15,5 @@
     "echo",
     "aws",
     "lambda"
-  ],
-  "dependencies": {
-    "alexa-ssml": "^0.5.0"
-  }
+  ]
 }

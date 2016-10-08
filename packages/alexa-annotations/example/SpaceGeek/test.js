@@ -1,6 +1,6 @@
 import test from 'ava';
 import sinon from 'sinon';
-import Request from '../../src/Request';
+import Request from 'alexa-request';
 import SpaceGeek from './index';
 
 test.before(() => {

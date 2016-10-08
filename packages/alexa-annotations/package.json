@@ -14,14 +14,12 @@
     "build",
     "src"
   ],
-  "scripts": {
-    "preversion": "npm test",
-    "postversion": "git push && git push --tags",
-    "lint": "eslint src/**/*.js example/**/*.js"
-  },
   "dependencies": {
     "bluebird": "^3.3.4",
     "object-values": "^1.0.0"
+  },
+  "devDependencies": {
+    "alexa-request": "0.0.0"
   },
   "keywords": [
     "alexa",

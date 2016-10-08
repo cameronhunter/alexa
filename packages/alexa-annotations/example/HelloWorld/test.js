@@ -1,5 +1,5 @@
 import test from 'ava';
-import Request from '../../src/Request';
+import Request from 'alexa-request';
 import HelloWorld from './index';
 
 const DefaultRequest = Request.session({ application: { applicationId: 'my-app-id' } });

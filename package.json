@@ -2,6 +2,7 @@
   "scripts": {
     "build:dev": "lerna exec -- rollup --config ../../rollup.config.js",
     "build:production": "NODE_ENV=production lerna exec -- rollup --config ../../rollup.config.js",
+    "prebuild": "lerna bootstrap",
     "build": "npm-run-all --parallel build:dev build:production",
     "test": "ava --require babel-register ./packages/*/test/*test.js ./packages/*/example/*test.js",
     "posttest": "npm run lint",

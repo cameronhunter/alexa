@@ -1,4 +1,5 @@
 export Skill from './Skill';
+export * as ErrorCode from './ErrorCodes';
 
 /*******************************************************************************
  * Alexa Custom Skill Intents
@@ -23,9 +24,3 @@ export DecrementTargetTemperature from './SmartHomeSkill/DecrementTargetTemperat
 export SetPercentage from './SmartHomeSkill/SetPercentage';
 export IncrementPercentage from './SmartHomeSkill/IncrementPercentage';
 export DecrementPercentage from './SmartHomeSkill/DecrementPercentage';
-
-/*******************************************************************************
- * Misc
- ******************************************************************************/
-export Request from './Request';
-export * as ErrorCode from './ErrorCodes';
