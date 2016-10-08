@@ -7,7 +7,7 @@
     "test": "ava --require babel-register ./packages/*/test/*test.js ./packages/*/example/*test.js",
     "posttest": "npm run lint",
     "lint": "eslint ./packages/**/src/*.js ./packages/**/src/**/*.js ./packages/**/test/**/*.js ./packages/**/example/**/*.js",
-    "prepublish": "npm run test",
+    "prepublish": "npm run build && npm run test",
     "publish": "lerna publish"
   },
   "devDependencies": {
