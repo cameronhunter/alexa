@@ -15,8 +15,6 @@
     "src"
   ],
   "scripts": {
-    "pretest": "npm run build",
-    "test": "ava --require babel-register --require babel-polyfill ./test/**/*test.js ./example/**/*test.js",
     "posttest": "npm run lint",
     "preversion": "npm test",
     "postversion": "git push && git push --tags",
@@ -32,8 +30,5 @@
     "skill",
     "amazon",
     "lambda"
-  ],
-  "ava": {
-    "babel": "inherit"
-  }
+  ]
 }
