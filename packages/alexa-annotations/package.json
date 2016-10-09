@@ -6,7 +6,7 @@
   },
   "name": "alexa-annotations",
   "description": "Create Alexa skills for the Amazon Echo, easily.",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "main": "build/index.min.js",
   "license": "MIT",
   "repository": "cameronhunter/alexa-lambda-skill",
@@ -19,7 +19,7 @@
     "object-values": "^1.0.0"
   },
   "devDependencies": {
-    "alexa-request": "^0.1.0"
+    "alexa-request": "^0.1.1"
   },
   "keywords": [
     "alexa",

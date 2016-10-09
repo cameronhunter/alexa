@@ -1,6 +1,6 @@
 {
   "name": "alexa-request",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build JSON requests for Amazon Alexa, easily.",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
