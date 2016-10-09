@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "clean": "lerna clean",
     "bootstrap": "lerna bootstrap",
     "build:dev": "lerna exec -- rollup --config ../../rollup.config.js",
     "build:production": "NODE_ENV=production lerna exec -- rollup --config ../../rollup.config.js",
