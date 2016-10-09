@@ -11,7 +11,7 @@
     "indent": ["error", 2],
     "semi": [2, "always"],
     "quotes": [2, "single"],
-    "no-undef": [2, {  }],
+    "no-undef": [2],
     "no-unused-vars": [2, { "varsIgnorePattern": "^ssml$" }]
   }
 }
