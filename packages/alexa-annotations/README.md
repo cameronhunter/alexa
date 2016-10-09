@@ -1,7 +1,5 @@
 # alexa-annotations
 
-[![Build Status](https://travis-ci.org/cameronhunter/alexa-annotations.svg?branch=master)](https://travis-ci.org/cameronhunter/alexa-annotations) [![NPM Version](https://img.shields.io/npm/v/alexa-annotations.svg)](https://npmjs.org/package/alexa-annotations) [![License](https://img.shields.io/npm/l/alexa-annotations.svg)](https://github.com/cameronhunter/alexa-annotations/blob/master/LICENSE)
-
 Easily create Alexa Skills to run on AWS Lambda using ES6 classes and ES7 decorators.
 
 Try it in the [online playground](http://cameronhunter.github.io/alexa-playground/) or create your own Alexa skill with the [Yeoman generator](https://github.com/cameronhunter/generator-alexa-skill).

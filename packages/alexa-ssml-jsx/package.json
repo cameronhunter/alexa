@@ -1,0 +1,8 @@
+{
+  "name": "alexa-ssml-jsx",
+  "version": "0.0.0",
+  "description": "Write SSML inline within javascript files using JSX",
+  "main": "build/index.min.js",
+  "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
+  "license": "MIT"
+}

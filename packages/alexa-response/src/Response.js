@@ -1,4 +1,4 @@
-import { ssml, renderToString } from 'alexa-ssml';
+import ssml, { renderToString } from 'alexa-ssml-jsx';
 import CardType from './constants/CardType';
 import SpeechType from './constants/SpeechType';
 

@@ -1,6 +1,6 @@
 import test from 'ava';
 import Response from '../src';
-import { ssml } from 'alexa-ssml';
+import ssml from 'alexa-ssml-jsx';
 
 test('PlainText', t => {
   const response = Response.build({

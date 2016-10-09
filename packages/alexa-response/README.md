@@ -1,7 +1,5 @@
 # Alexa Response
 
-[![Build Status](https://travis-ci.org/cameronhunter/alexa-response.svg?branch=master)](https://travis-ci.org/cameronhunter/alexa-response) [![NPM Version](https://img.shields.io/npm/v/alexa-response.svg)](https://npmjs.org/package/alexa-response) [![License](https://img.shields.io/npm/l/alexa-response.svg)](https://github.com/cameronhunter/alexa-response/blob/master/LICENSE.md)
-
 Build JSON responses for Amazon Alexa, easily. Alexa Response makes use of a
 chainable interface to simplify building complex responses. Try it out in the
 [Alexa Playground](http://cameronhunter.github.io/alexa-playground/).
@@ -101,7 +99,7 @@ Response.directives(
 
 You can use [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
 directly by including `babel-plugin-transform-react-jsx` in your `.babelrc` and
-importing `ssml` from [`alexa-ssml`](https://github.com/nickclaw/alexa-ssml) in your source file.
+importing `ssml` from [`alexa-ssml-jsx`](https://github.com/cameronhunter/alexa) in your source file.
 
 ```json
 {
@@ -113,7 +111,12 @@ importing `ssml` from [`alexa-ssml`](https://github.com/nickclaw/alexa-ssml) in 
 
 ```javascript
 import Response from 'alexa-response';
-import { ssml } from 'alexa-ssml';
+import ssml from 'ssml-jsx';
 
-Response.ask(<speak><p>Hello world!</p><p>What would you like to do today?</p></speak>).build();
+Response.ask(
+  <speak>
+    <p>Hello world!</p>
+    <p>What would you like to do today?</p>
+  </speak>
+).build();
 ```
