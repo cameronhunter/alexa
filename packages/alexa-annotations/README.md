@@ -4,7 +4,7 @@ Easily create Alexa Skills to run on AWS Lambda using ES6 classes and ES7 decora
 
 Try it in the [online playground](http://cameronhunter.github.io/alexa-playground/) or create your own Alexa skill with the [Yeoman generator](https://github.com/cameronhunter/generator-alexa-skill).
 
-## Example
+## Custom Skill Example
 
 ```javascript
 import { Skill, Intent, Launch } from 'alexa-annotations';
@@ -42,5 +42,31 @@ export default class Echo {
     });
   }
 
+}
+```
+
+## Smart Home Skill Example
+
+```javascript
+import { Skill, Discovery, TurnOn, TurnOff } from 'alexa-annotations';
+import { devices, brightness } from './light-bulbs';
+
+@Skill
+export default class SmartHome {
+
+  @Discovery
+  discovery() {
+    return devices();
+  }
+
+  @TurnOn
+  on(applianceId) {
+    return brightness(applianceId, 100);
+  }
+
+  @TurnOff
+  off(applianceId) {
+    return brightness(applianceId, 0);
+  }
 }
 ```
