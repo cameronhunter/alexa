@@ -1,4 +1,4 @@
+# Version of Node used in AWS Lambda: http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html
 language: node_js
 node_js:
   - 'stable'
-  - '4.3.2' # Version of Node used in AWS Lambda: http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html
