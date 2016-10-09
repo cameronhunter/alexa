@@ -20,8 +20,5 @@ export default {
     strength: PropTypes.oneOf(Strengths),
     time: PropTypes.match(/(\d+)(m?s)?/),
     children: PropTypes.none
-  },
-  defaultProps: {
-    strength: 'medium'
   }
 };
