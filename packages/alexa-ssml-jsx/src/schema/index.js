@@ -5,9 +5,9 @@ import sayAsTag from './say-as';
 import speak from './speak';
 
 export default {
-    'break': breakTag,
-    p,
-    s,
-    'say-as': sayAsTag,
-    speak
+  'break': breakTag,
+  p,
+  s,
+  'say-as': sayAsTag,
+  speak
 };

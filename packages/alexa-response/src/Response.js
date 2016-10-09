@@ -15,13 +15,13 @@ export default class Response {
     const text = typeof options === 'string' ? options : options;
     const type = typeof options === 'string' ? undefined : options.type;
     switch (action) {
-      case 'ask': return response.ask(text, type);
-      case 'say': return response.say(text, type);
-      case 'reprompt': return response.reprompt(text, type);
-      case 'card': return response.card(options);
-      case 'attributes': return response.attributes(options);
-      case 'shouldEndSession': return response.shouldEndSession(options);
-      case 'directives': return response.directives(options);
+    case 'ask': return response.ask(text, type);
+    case 'say': return response.say(text, type);
+    case 'reprompt': return response.reprompt(text, type);
+    case 'card': return response.card(options);
+    case 'attributes': return response.attributes(options);
+    case 'shouldEndSession': return response.shouldEndSession(options);
+    case 'directives': return response.directives(options);
     }
   }, new Response());
 

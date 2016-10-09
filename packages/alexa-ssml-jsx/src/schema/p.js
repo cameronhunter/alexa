@@ -6,8 +6,8 @@
 import PropTypes from '../prop-types/index';
 
 export default {
-    type: 'p',
-    propTypes: {
-        children: PropTypes.array.isRequired
-    }
+  type: 'p',
+  propTypes: {
+    children: PropTypes.array.isRequired
+  }
 };
