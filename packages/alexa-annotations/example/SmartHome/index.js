@@ -1,4 +1,4 @@
-import { Skill, Discovery, TurnOn, TurnOff, Control } from '../..';
+import { Skill, Discovery, TurnOn, TurnOff, Control, SetPercentage } from '../..';
 import { devices, brightness } from './appliances';
 
 @Skill

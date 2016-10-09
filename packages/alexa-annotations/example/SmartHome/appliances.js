@@ -1,5 +1,5 @@
-const Appliances = [
-  {
+const Appliances = {
+  'living-room': {
     brightness: 0,
     device: {
       applianceId: 'living-room',
@@ -12,7 +12,7 @@ const Appliances = [
       actions: ['turnOn', 'turnOff', 'setPercentage', 'incrementPercentage', 'decrementPercentage'],
     },
   },
-  {
+  'bedroom': {
     brightness: 100,
     device: {
       applianceId: 'bedroom',
@@ -25,25 +25,23 @@ const Appliances = [
       actions: ['turnOn', 'turnOff', 'setPercentage', 'incrementPercentage', 'decrementPercentage'],
     }
   }
-];
+};
 
 export const devices = () => {
-  return Promise.resolve(Appliances.map(_ => _.device));
+  return Promise.resolve(Object.values(Appliances).map(_ => _.device));
 };
 
 export const brightness = (applianceId, value) => {
     // Get
   if (value == null) {
-    return new Promise((resolve, reject) => {
-      const [value] = Appliances.filter(_ => _.device.applianceId === applianceId).map(_ => _.brightness);
-      value !== undefined ? resolve(value) : reject();
-    });
+    const appliance = Appliances[applianceId];
+    return appliance ? Promise.resolve(appliance.brightness) : Promise.reject();
   }
 
     // Set
   return new Promise((resolve, reject) => {
-    const [appliance] = state.filter(_ => _.device.applianceId === applianceId);
-    appliance ? resolve({ ...state, [applianceId]: { ...state[applianceId], brightness: value } }) : reject();
+    const appliance = Appliances[applianceId];
+    appliance ? resolve({ ...Appliances, [applianceId]: { ...Appliances[applianceId], brightness: value } }) : reject();
   }).then(updatedState => {
     Appliances = updatedState;
     return value;

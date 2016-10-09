@@ -66,7 +66,7 @@ export default class HistoryBuff {
     return ask('<speak>' + speechText + (moreContent ? ' Wanna go deeper in history?' : '') + '</speak>', 'SSML')
             .card({ title: cardTitle, content: cardContent + (moreContent ? ' Wanna go deeper in history?' : '') })
             .reprompt(repromptText)
-            .attributes({ result, index });
+            .attributes({ result: this.result, index });
   }
 
   @Intent('AMAZON.CancelIntent', 'AMAZON.StopIntent')

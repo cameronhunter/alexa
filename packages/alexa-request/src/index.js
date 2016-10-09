@@ -1,4 +1,6 @@
-export default from './Request';
+import Request from './Request';
+
+export default Request;
 
 // For commonjs compatibility
 export const session = Request.session;
