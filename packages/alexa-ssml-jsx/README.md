@@ -15,7 +15,7 @@ importing `ssml` from `alexa-ssml-jsx`.
 ```
 
 ```javascript
-import ssml, { renderToString } from 'ssml-jsx';
+import ssml, { renderToString } from 'alexa-ssml-jsx';
 
 const speech = (
   <speak>

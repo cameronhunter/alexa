@@ -111,7 +111,7 @@ importing `ssml` from [`alexa-ssml-jsx`](https://github.com/cameronhunter/alexa)
 
 ```javascript
 import Response from 'alexa-response';
-import ssml from 'ssml-jsx';
+import ssml from 'alexa-ssml-jsx';
 
 Response.ask(
   <speak>
