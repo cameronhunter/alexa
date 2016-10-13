@@ -6,7 +6,7 @@
   },
   "name": "alexa-constants",
   "description": "Constants used in Amazon Alexa requests and responses",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "build/index.min.js",
   "license": "MIT",
   "repository": "cameronhunter/alexa",
