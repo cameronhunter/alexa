@@ -4,9 +4,9 @@
     "email": "hello@cameronhunter.co.uk",
     "url": "http://cameronhunter.co.uk"
   },
-  "name": "alexa-annotations",
-  "description": "Create Alexa skills for the Amazon Echo, easily.",
-  "version": "8.1.0",
+  "name": "alexa-constants",
+  "description": "Constants used in Amazon Alexa requests and responses",
+  "version": "0.1.0",
   "main": "build/index.min.js",
   "license": "MIT",
   "repository": "cameronhunter/alexa",
@@ -14,13 +14,6 @@
     "build",
     "src"
   ],
-  "dependencies": {
-    "bluebird": "^3.3.4",
-    "object-values": "^1.0.0"
-  },
-  "devDependencies": {
-    "alexa-request": "^0.1.1"
-  },
   "keywords": [
     "alexa",
     "echo",
