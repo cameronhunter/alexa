@@ -70,3 +70,46 @@ export default class SmartHome {
   }
 }
 ```
+
+## Custom Annotations
+
+You can also create your own custom annotations:
+
+```javascript
+import { annotation } from 'alexa-annotations';
+
+const PlaybackStarted = annotation(
+    // Predicate to match the event
+    ({ request = {} }) => request.type === 'AudioPlayer.PlaybackStarted',
+
+    // Optionally transform the event to pass additional params to the handler
+    ({ request = {} }) => request.token ? [JSON.parse(request.token)] : []
+);
+
+const AudioPlayerEvent = annotation(
+    ({ request = {} }) => request.type && request.type.startsWith('AudioPlayer.'),
+    ({ request = {} }) => request.type
+);
+
+@Skill
+class AudioSkill {
+
+    @PlaybackStarted
+    onPlaybackStarted(token, event) {
+        // Do something with token and event
+    }
+
+    @AudioPlayerEvent
+    onAudioPlayerEvent(type, event) {
+      switch (type) {
+        case 'AudioPlayer.PlaybackStopped':
+          // Handle stopped event
+        case 'AudioPlayer.PlaybackPaused':
+          // Handle pause event
+        default:
+          // Handle other audio player event types
+      }
+    }
+
+}
+```

@@ -1,4 +1,5 @@
 export Skill from './Skill';
+export annotation from './annotation';
 export * as ErrorCode from './ErrorCodes';
 
 /*******************************************************************************
