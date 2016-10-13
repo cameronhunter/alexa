@@ -9,7 +9,13 @@ for the Amazon Echo.
 [![NPM Version](https://img.shields.io/npm/v/alexa-annotations.svg)](https://npmjs.org/package/alexa-annotations)
 
 Provides ES7 annotations for declaratively building both custom skills and smart
-home skills for the Echo. These skills are designed to be run on AWS Lambda.
+home skills for the Echo. These skills are designed to be run on AWS Lambda. Try
+it out in the [Playground](https://cameronhunter.github.io/alexa-playground/).
+
+### alexa-constants
+[![NPM Version](https://img.shields.io/npm/v/alexa-constants.svg)](https://npmjs.org/package/alexa-constants)
+
+Provides constants commonly used in Amazon Alexa requests and responses.
 
 ### alexa-request
 [![NPM Version](https://img.shields.io/npm/v/alexa-request.svg)](https://npmjs.org/package/alexa-request)
