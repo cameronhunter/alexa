@@ -1,4 +1,5 @@
 export const Request = {
+  ExceptionEncountered: 'System.ExceptionEncountered',
   Intent: 'IntentRequest',
   Launch: 'LaunchRequest',
   SessionEnded: 'SessionEndedRequest'
@@ -7,7 +8,6 @@ export const Request = {
 export const Intent = {
   Cancel: 'AMAZON.CancelIntent',
   Help: 'AMAZON.HelpIntent',
-  Stop: 'AMAZON.StopIntent',
   LoopOff: 'AMAZON.LoopOffIntent',
   LoopOn: 'AMAZON.LoopOnIntent',
   Next: 'AMAZON.NextIntent',
@@ -19,7 +19,33 @@ export const Intent = {
   ShuffleOff: 'AMAZON.ShuffleOffIntent',
   ShuffleOn: 'AMAZON.ShuffleOnIntent',
   StartOver: 'AMAZON.StartOverIntent',
+  Stop: 'AMAZON.StopIntent',
   Yes: 'AMAZON.YesIntent'
+};
+
+export const AudioPlayer = {
+  Request: {
+    PlaybackFailed: 'AudioPlayer.PlaybackFailed',
+    PlaybackFinished: 'AudioPlayer.PlaybackFinished',
+    PlaybackNearlyFinished: 'AudioPlayer.PlaybackNearlyFinished',
+    PlaybackStarted: 'AudioPlayer.PlaybackStarted',
+    PlaybackStopped: 'AudioPlayer.PlaybackStopped'
+  },
+
+  Directive: {
+    ClearQueue: 'AudioPlayer.ClearQueue',
+    Play: 'AudioPlayer.Play',
+    Stop: 'AudioPlayer.Stop'
+  }
+};
+
+export const PlaybackController = {
+  Request: {
+    NextCommandIssued: 'PlaybackController.NextCommandIssued',
+    PauseCommandIssued: 'PlaybackController.PauseCommandIssued',
+    PlayCommandIssued: 'PlaybackController.PlayCommandIssued',
+    PreviousCommandIssued: 'PlaybackController.PreviousCommandIssued'
+  }
 };
 
 export const ConnectedHome = {
