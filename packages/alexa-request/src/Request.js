@@ -1,3 +1,5 @@
+import { Request as Constants } from 'alexa-constants';
+
 export default class Request {
   static session = (...args) => new Request().session(...args);
   static intent = (...args) => new Request().intent(...args);
@@ -23,7 +25,7 @@ export default class Request {
     return new Request({
       ...this.state,
       request: {
-        type: 'IntentRequest',
+        type: Constants.Intent,
         intent: {
           name: name,
           ...(Object.keys(slotData).length ? { slots: slotData } : null)
@@ -36,7 +38,7 @@ export default class Request {
     return new Request({
       ...this.state,
       request: {
-        type: 'LaunchRequest'
+        type: Constants.Launch
       }
     });
   }
@@ -45,7 +47,7 @@ export default class Request {
     return new Request({
       ...this.state,
       request: {
-        type: 'SessionEndedRequest'
+        type: Constants.SessionEnded
       }
     });
   }

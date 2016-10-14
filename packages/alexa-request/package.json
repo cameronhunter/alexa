@@ -9,6 +9,9 @@
     "build",
     "src"
   ],
+  "dependencies": {
+      "alexa-constants": "^0.2.0"
+  },
   "keywords": [
     "amazon",
     "alexa",

@@ -75,3 +75,11 @@ export const ConnectedHome = {
     TurnOn: 'TurnOnConfirmation'
   }
 };
+
+export default {
+  AudioPlayer,
+  ConnectedHome,
+  Intent,
+  PlaybackController,
+  Request
+};
