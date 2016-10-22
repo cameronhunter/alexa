@@ -1,6 +1,5 @@
 import ssml, { renderToString } from 'alexa-ssml-jsx';
-import CardType from './constants/CardType';
-import SpeechType from './constants/SpeechType';
+import { CardType, SpeechType } from 'alexa-constants';
 
 export default class Response {
   static ask = (...args) => new Response().ask(...args);

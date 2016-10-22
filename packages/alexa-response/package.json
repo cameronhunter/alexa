@@ -17,6 +17,7 @@
     "lambda"
   ],
   "dependencies": {
-    "alexa-ssml-jsx": "^1.0.1"
+    "alexa-ssml-jsx": "^1.0.1",
+    "alexa-constants": "0.2.0"
   }
 }

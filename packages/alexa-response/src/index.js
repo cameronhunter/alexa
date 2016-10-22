@@ -1,8 +1,5 @@
 import Response from './Response';
 
-export CardType from './constants/CardType';
-export SpeechType from './constants/SpeechType';
-
 export AudioPlayer from './AudioPlayer';
 export Response from './Response';
 
