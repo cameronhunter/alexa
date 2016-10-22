@@ -1,6 +1,6 @@
 {
   "name": "alexa-request",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Build JSON requests for Amazon Alexa, easily.",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "src"
   ],
   "dependencies": {
-    "alexa-constants": "^0.3.0"
+    "alexa-constants": "^0.3.1"
   },
   "keywords": [
     "amazon",
