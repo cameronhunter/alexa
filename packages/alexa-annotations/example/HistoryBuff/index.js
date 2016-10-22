@@ -1,6 +1,7 @@
 import { Skill, Intent, Launch } from '../..';
 import Response from 'alexa-response';
 import wikipedia from './wikipedia';
+import ssml from 'alexa-ssml-jsx';
 
 const { ask, say } = Response;
 
@@ -18,9 +19,19 @@ export default class HistoryBuff {
 
   @Launch
   launch() {
-    return ask('<speak><p>History buff.</p> <p>What day do you want events for?</p></speak>', 'SSML')
-            .card({ title: 'This Day in History', content: 'History Buff. What day do you want events for?' })
-            .reprompt(IntroText);
+    return Response.build({
+      ask: (
+        <speak>
+          <p>History buff.</p>
+          <p>What day do you want events for?</p>
+        </speak>
+      ),
+      card: {
+        title: 'This Day in History',
+        content: 'History Buff. What day do you want events for?'
+      },
+      reprompt: IntroText
+    });
   }
 
   @Intent('GetFirstEventIntent')
@@ -33,10 +44,18 @@ export default class HistoryBuff {
       const events = result.slice(0, PaginationSize);
       const speechText = events.reduce((state, event) => `<p>${state}${event}</p>`, '');
 
-      return ask(`<speak><p>For ${monthName} ${date.getDate()}, </p> ${speechText} <p>Wanna go deeper in history?</p></speak>`, 'SSML')
-              .card({ title: cardTitle, content: `For ${monthName} ${date.getDate()}, ${events.join(' ')}` })
-              .reprompt(IntroText)
-              .attributes({ result, index: PaginationSize });
+      return Response.build({
+        ask: (
+          <speak>
+            <p>For {monthName} {date.getDate()},</p>
+            {speechText}
+            <p>Wanna go deeper in history?</p>
+          </speak>
+        ),
+        card: { title: cardTitle, content: `For ${monthName} ${date.getDate()}, ${events.join(' ')}` },
+        reprompt: IntroText,
+        attributes: { result, index: PaginationSize }
+      });
     }).catch(error => {
       return say(error).card(cardTitle, error);
     });
@@ -63,7 +82,7 @@ export default class HistoryBuff {
     const speechText = events.reduce((state, event) => `<p>${state}${event}</p>`, '');
     const cardContent = events.join(' ');
 
-    return ask('<speak>' + speechText + (moreContent ? ' Wanna go deeper in history?' : '') + '</speak>', 'SSML')
+    return ask(<speak>{speechText}{moreContent ? ' Wanna go deeper in history?' : ''}</speak>)
             .card({ title: cardTitle, content: cardContent + (moreContent ? ' Wanna go deeper in history?' : '') })
             .reprompt(repromptText)
             .attributes({ result: this.result, index });
