@@ -1,6 +1,8 @@
 import { ControlRequest } from './Control';
+import { ConnectedHome } from 'alexa-constants';
+import UUID from 'uuid';
 
-const name = 'SetTargetTemperatureRequest';
+const name = ConnectedHome.Request.SetTargetTemperature;
 
 const requestTransform = ({ payload = {} }) => {
   const { appliance = {}, targetTemperature = {} } = payload;
@@ -9,9 +11,9 @@ const requestTransform = ({ payload = {} }) => {
 
 const responseTransform = (response) => Promise.resolve(response).then(state => ({
   header: {
-    messageId: '26fa11a8-accb-4f66-a272-8b1ff7abd722',
-    name: 'SetTargetTemperatureConfirmation',
-    namespace: 'Alexa.ConnectedHome.Control',
+    messageId: UUID.v4(),
+    name: ConnectedHome.Confirmation.SetTargetTemperature,
+    namespace: ConnectedHome.Control,
     payloadVersion: '2'
   },
   payload: {

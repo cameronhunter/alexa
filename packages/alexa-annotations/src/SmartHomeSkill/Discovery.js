@@ -1,6 +1,7 @@
 import annotation from '../annotation';
+import { ConnectedHome } from 'alexa-constants';
 
 export default annotation(({ header = {} }) => {
   const { namespace, name } = header;
-  return namespace === 'Alexa.ConnectedHome.Discovery' && name === 'DiscoverAppliancesRequest';
+  return namespace === ConnectedHome.Discovery && name === ConnectedHome.Request.DiscoverAppliances;
 });

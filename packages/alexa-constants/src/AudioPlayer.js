@@ -11,5 +11,16 @@ export default {
     ClearQueue: 'AudioPlayer.ClearQueue',
     Play: 'AudioPlayer.Play',
     Stop: 'AudioPlayer.Stop'
+  },
+
+  PlayBehavior: {
+    Enqueue: 'ENQUEUE',
+    ReplaceAll: 'REPLACE_ALL',
+    ReplaceEnqueued: 'REPLACE_ENQUEUED'
+  },
+
+  ClearBehavior: {
+    ClearAll: 'CLEAR_ALL',
+    ClearEnqueued: 'CLEAR_ENQUEUED'
   }
 };

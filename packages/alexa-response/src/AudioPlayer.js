@@ -1,30 +1,33 @@
+import { AudioPlayer } from 'alexa-constants';
+const { Directive, PlayBehavior, ClearBehavior } = AudioPlayer;
+
 export default {
   play(stream) {
     return {
-      type: 'AudioPlayer.Play',
-      playBehavior: 'REPLACE_ALL',
+      type: Directive.Play,
+      playBehavior: PlayBehavior.ReplaceAll,
       audioItem: { stream }
     };
   },
 
   enqueue(stream, replaceQueue = false) {
     return {
-      type: 'AudioPlayer.Play',
-      playBehavior: replaceQueue ? 'REPLACE_ENQUEUED' : 'ENQUEUE',
+      type: Directive.Play,
+      playBehavior: replaceQueue ? PlayBehavior.ReplaceEnqueued : PlayBehavior.Enqueue,
       audioItem: { stream }
     };
   },
 
   stop() {
     return {
-      type: 'AudioPlayer.Stop'
+      type: Directive.Stop
     };
   },
 
   clearQueue(stopCurrent = false) {
     return {
-      type: 'AudioPlayer.ClearQueue',
-      clearBehavior: stopCurrent ? 'CLEAR_ALL' : 'CLEAR_ENQUEUED'
+      type: Directive.ClearQueue,
+      clearBehavior: stopCurrent ? ClearBehavior.ClearAll : ClearBehavior.ClearEnqueued
     };
   }
 };
