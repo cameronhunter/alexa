@@ -35,10 +35,10 @@ test('handles custom tags', t => {
 
 test('creates an object containing type and children keys', t => {
   const speech = (
-        <speak>
-            <s>This is a sentence</s>
-        </speak>
-    );
+    <speak>
+      <s>This is a sentence</s>
+    </speak>
+  );
 
   t.deepEqual(speech, {
     type: 'speak',
