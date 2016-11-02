@@ -1,6 +1,6 @@
 {
   "name": "alexa-response",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Build JSON responses for Amazon Alexa, easily.",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "lambda"
   ],
   "dependencies": {
-    "alexa-ssml-jsx": "^1.0.1",
+    "alexa-ssml-jsx": "^1.1.0",
     "alexa-constants": "^0.3.1"
   }
 }
