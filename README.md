@@ -5,7 +5,7 @@ for the Amazon Echo.
 
 ## Libraries
 
-### [alexa-annotations](tree/master/packages/alexa-annotations)
+### [alexa-annotations](/tree/master/packages/alexa-annotations)
 [![NPM Version](https://img.shields.io/npm/v/alexa-annotations.svg)](https://npmjs.org/package/alexa-annotations)
 
 Provides ES7 annotations for declaratively building both custom skills and smart
