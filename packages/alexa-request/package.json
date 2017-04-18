@@ -1,7 +1,8 @@
 {
   "name": "alexa-request",
-  "version": "0.2.1",
   "description": "Build JSON requests for Amazon Alexa, easily.",
+  "version": "0.2.1",
+  "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-request",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
   "main": "build/index.min.js",

@@ -1,15 +1,15 @@
 {
+  "name": "alexa-annotations",
+  "description": "Create Alexa skills for the Amazon Echo, easily.",
+  "version": "9.0.1",
+  "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-annotations",
   "author": {
     "name": "Cameron Hunter",
     "email": "hello@cameronhunter.co.uk",
     "url": "http://cameronhunter.co.uk"
   },
-  "name": "alexa-annotations",
-  "description": "Create Alexa skills for the Amazon Echo, easily.",
-  "version": "9.0.1",
   "main": "build/index.min.js",
   "license": "MIT",
-  "repository": "cameronhunter/alexa",
   "files": [
     "build",
     "src"
