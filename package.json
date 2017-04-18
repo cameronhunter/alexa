@@ -7,33 +7,36 @@
     "prebuild": "npm run bootstrap",
     "build": "npm-run-all --parallel build:dev build:production",
     "pretest": "npm run build",
-    "test": "ava --require babel-register ./packages/*/test/*test.js ./packages/*/example/*test.js",
+    "test": "ava ./packages/*/test/*test.js ./packages/*/example/*test.js",
     "posttest": "npm run lint",
     "lint": "eslint ./packages/**/src/*.js ./packages/**/src/**/*.js ./packages/**/test/**/*.js ./packages/**/example/**/*.js",
     "prepublish": "npm run test",
     "publish": "lerna publish"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
+    "ava": "^0.19.1",
     "babel-eslint": "^7.1.0",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.18.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.5.2",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-es2015-rollup": "^1.2.0",
-    "babel-preset-stage-1": "^6.16.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "babel-register": "^6.18.0",
     "eslint": "^3.9.1",
     "isomorphic-fetch": "^2.2.1",
     "lerna": "2.0.0-beta.30",
-    "npm-run-all": "^3.1.1",
-    "rollup": "^0.36.3",
+    "npm-run-all": "^4.0.2",
+    "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-inject": "^2.0.0",
-    "rollup-plugin-uglify": "^1.0.1",
-    "sinon": "^1.17.6"
+    "sinon": "^2.1.0"
   },
   "ava": {
-    "babel": "inherit"
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
   }
 }
