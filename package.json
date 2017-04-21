@@ -11,7 +11,8 @@
     "posttest": "npm run lint",
     "lint": "eslint ./packages/**/src/*.js ./packages/**/src/**/*.js ./packages/**/test/**/*.js ./packages/**/example/**/*.js",
     "prepublish": "npm run test",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "lerna": "lerna"
   },
   "devDependencies": {
     "ava": "^0.19.1",
