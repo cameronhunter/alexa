@@ -1,7 +1,7 @@
 {
   "name": "alexa-annotations",
   "description": "Create Alexa skills for the Amazon Echo, easily.",
-  "version": "9.1.0",
+  "version": "9.1.1",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-annotations",
   "author": {
     "name": "Cameron Hunter",
@@ -18,10 +18,10 @@
     "bluebird": "^3.3.4",
     "object-values": "^1.0.0",
     "uuid": "^2.0.3",
-    "alexa-constants": "^0.4.0"
+    "alexa-constants": "^0.4.1"
   },
   "devDependencies": {
-    "alexa-request": "^0.3.0"
+    "alexa-request": "^0.3.1"
   },
   "keywords": [
     "alexa",
