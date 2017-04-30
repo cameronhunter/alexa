@@ -1,10 +1,10 @@
-# alexa-ssml-jsx
+# ssml-jsx
 
 Write SSML inline within JavaScript.
 
 You can use [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
 directly by including `babel-plugin-transform-react-jsx` in your `.babelrc` and
-importing `ssml` from `alexa-ssml-jsx`.
+importing `ssml` from `ssml-jsx`.
 
 ```json
 {
@@ -15,7 +15,7 @@ importing `ssml` from `alexa-ssml-jsx`.
 ```
 
 ```javascript
-import ssml, { renderToString } from 'alexa-ssml-jsx';
+import ssml, { renderToString } from 'ssml-jsx';
 
 const speech = (
   <speak>

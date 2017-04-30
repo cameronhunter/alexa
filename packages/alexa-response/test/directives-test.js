@@ -1,6 +1,6 @@
 import test from 'ava';
 import { directives, AudioPlayer } from '../src';
-import ssml from 'alexa-ssml-jsx';
+import ssml from 'ssml-jsx';
 
 test('Add single directive', t => {
   t.deepEqual(directives(AudioPlayer.stop()).build(), {

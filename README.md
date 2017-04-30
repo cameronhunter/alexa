@@ -31,8 +31,8 @@ Provides a chainable pattern for building responses for skill intents and smart
 home directives. Easily create speech, cards, and question responses as well as
 smart home responses.
 
-### [alexa-ssml-jsx](https://github.com/cameronhunter/alexa/tree/master/packages/alexa-ssml-jsx)
-[![NPM Version](https://img.shields.io/npm/v/alexa-ssml-jsx.svg)](https://npmjs.org/package/alexa-ssml-jsx)
+### [ssml-jsx](https://github.com/cameronhunter/alexa/tree/master/packages/ssml-jsx)
+[![NPM Version](https://img.shields.io/npm/v/ssml-jsx.svg)](https://npmjs.org/package/ssml-jsx)
 
 Alexa supports speech via simple strings, but it also supports more complex
 speech defined in SSML. This library allows developers to write valid SSML

@@ -1,6 +1,6 @@
 import test from 'ava';
 import { card } from '../src';
-import ssml from 'alexa-ssml-jsx';
+import ssml from 'ssml-jsx';
 
 test('Simple', t => {
   t.deepEqual(card({ title: 'Title', content: 'This is the card content' }).build(), {

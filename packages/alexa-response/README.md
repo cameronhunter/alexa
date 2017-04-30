@@ -99,7 +99,7 @@ Response.directives(
 
 You can use [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
 directly by including `babel-plugin-transform-react-jsx` in your `.babelrc` and
-importing `ssml` from [`alexa-ssml-jsx`](https://github.com/cameronhunter/alexa) in your source file.
+importing `ssml` from [`ssml-jsx`](https://github.com/cameronhunter/alexa) in your source file.
 
 ```json
 {
@@ -111,7 +111,7 @@ importing `ssml` from [`alexa-ssml-jsx`](https://github.com/cameronhunter/alexa)
 
 ```javascript
 import Response from 'alexa-response';
-import ssml from 'alexa-ssml-jsx';
+import ssml from 'ssml-jsx';
 
 Response.ask(
   <speak>

@@ -1,7 +1,7 @@
 import { Skill, Intent, Launch } from '../..';
 import Response from 'alexa-response';
 import wikipedia from './wikipedia';
-import ssml from 'alexa-ssml-jsx';
+import ssml from 'ssml-jsx';
 
 const { ask, say } = Response;
 

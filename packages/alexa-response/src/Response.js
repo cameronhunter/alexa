@@ -1,4 +1,4 @@
-import ssml, { renderToString } from 'alexa-ssml-jsx';
+import ssml, { renderToString } from 'ssml-jsx';
 import { CardType, SpeechType } from 'alexa-constants';
 
 export default class Response {

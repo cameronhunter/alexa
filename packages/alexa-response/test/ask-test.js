@@ -1,6 +1,6 @@
 import test from 'ava';
 import { ask } from '../src';
-import ssml from 'alexa-ssml-jsx';
+import ssml from 'ssml-jsx';
 
 test('PlainText', t => {
   t.deepEqual(ask('Hello world').build(), {
