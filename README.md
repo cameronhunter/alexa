@@ -35,5 +35,5 @@ smart home responses.
 [![NPM Version](https://img.shields.io/npm/v/ssml-jsx.svg)](https://npmjs.org/package/ssml-jsx)
 
 Alexa supports speech via simple strings, but it also supports more complex
-speech defined in SSML. This library allows developers to write valid SSML
-inline with their JavaScript.
+speech defined in SSML. This library allows developers to write valid SSML as
+JSX inline with their JavaScript.
