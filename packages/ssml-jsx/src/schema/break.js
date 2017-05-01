@@ -1,6 +1,8 @@
 /**
  * Represents a pause in the speech. Set the length of the pause with the strength or time attributes.
- * More info: https://www.w3.org/TR/speech-synthesis/#S3.2.3
+ *
+ * More info:
+ *   https://www.w3.org/TR/speech-synthesis/#S3.2.3
  */
 
 import PropTypes from 'prop-types';
