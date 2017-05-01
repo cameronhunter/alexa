@@ -3,7 +3,8 @@
  * More info: https://www.w3.org/TR/speech-synthesis/#S3.2.3
  */
 
-import PropTypes from '../prop-types/index';
+import PropTypes from 'prop-types';
+import { match, none } from '../custom-prop-types';
 
 const Strengths = [
   'none',     // No pause should be outputted. This can be used to remove a pause that would normally occur (such as after a period).
@@ -18,7 +19,7 @@ export default {
   type: 'break',
   propTypes: {
     strength: PropTypes.oneOf(Strengths),
-    time: PropTypes.match(/(\d+)(m?s)?/),
-    children: PropTypes.none
+    time: match(/(\d+)(m?s)?/),
+    children: none
   }
 };

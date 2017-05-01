@@ -7,7 +7,7 @@ export default {
   dest: isProduction ? './build/index.min.js' : './build/index.js',
   format: 'cjs',
   exports: 'named',
-  external: ['uuid', 'alexa-constants', 'ssml-jsx'],
+  external: ['uuid', 'alexa-constants', 'ssml-jsx', 'prop-types'],
   plugins: [
     babel({
       babelrc: false,

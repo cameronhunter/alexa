@@ -3,7 +3,7 @@
  * More info: https://www.w3.org/TR/speech-synthesis/#S3.1.8
  */
 
-import PropTypes from '../prop-types/index';
+import PropTypes from 'prop-types';
 
 const interpretations = [
   'characters', 'spell-out',  // Spell out each letter
@@ -24,7 +24,7 @@ const formats = ['mdy', 'dmy', 'ymd', 'md', 'dm', 'ym', 'my', 'd', 'm', 'y'];
 export default {
   type: 'say-as',
   propTypes: {
-    children: PropTypes.array.isRequired,
+    children: PropTypes.any.isRequired,
     'interpret-as': PropTypes.oneOf(interpretations).isRequired,
     format: (props, propName, tagName) => {
       if (props['interpret-as'] === 'date') {

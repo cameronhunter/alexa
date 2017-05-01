@@ -5,5 +5,8 @@
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/ssml-jsx",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "main": "build/index.min.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  }
 }
