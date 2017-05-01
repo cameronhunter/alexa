@@ -1,5 +1,10 @@
 import { Request as Constants } from 'alexa-constants';
 
+function entries(input) {
+  const array = input || [];
+  return Object.keys(array).map(key => [key, array[key]]);
+}
+
 export default class Request {
   static session = (...args) => new Request().session(...args);
   static intent = (...args) => new Request().intent(...args);
@@ -21,7 +26,7 @@ export default class Request {
   }
 
   intent(name, slots = {}) {
-    const slotData = Object.entries(slots).reduce((state, [name, value]) => ({ ...state, [name]: { name, value } }), {});
+    const slotData = entries(slots).reduce((state, [name, value]) => ({ ...state, [name]: { name, value } }), {});
     return new Request({
       ...this.state,
       request: {
