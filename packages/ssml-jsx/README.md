@@ -1,11 +1,21 @@
 # ssml-jsx
 
-Write SSML inline within JavaScript.
+Write [SSML](https://www.w3.org/TR/speech-synthesis/) inline within JavaScript. SSML is used in both
+[Amazon Alexa(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
+and [Google Home](https://developers.google.com/actions/reference/ssml) devices to provide tight control over device
+speech.
 
-You can use [SSML](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
-directly by including `babel-plugin-transform-react-jsx` in your `.babelrc` and
-importing `ssml` from `ssml-jsx`.
+## Setup
 
+You can use SSML directly in source code by including
+`babel-plugin-transform-react-jsx` in your Babel configuration and importing `ssml` from `ssml-jsx`.
+
+```bash
+$ npm install --save-dev babel-plugin-transform-react-jsx
+$ npm install --save ssml-jsx
+```
+
+`.babelrc`:
 ```json
 {
   "plugins": [
@@ -14,14 +24,20 @@ importing `ssml` from `ssml-jsx`.
 }
 ```
 
+## Usage
+
 ```javascript
 import ssml, { renderToString } from 'ssml-jsx';
 
-const speech = (
+// Author SSML directly as JSX
+const speechSSML = (
   <speak>
     <p>Hello world!</p>
     <break time='2s' />
     <p>What would you like to do today?</p>
   </speak>
 );
+
+// Render SSML to a string
+const speechString = renderToString(speechSSML);
 ```

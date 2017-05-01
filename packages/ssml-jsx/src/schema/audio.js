@@ -3,7 +3,7 @@
  * You can use this to embed short, pre-recorded audio within your service’s response.
  *
  * More info:
- *   https://www.w3.org/TR/speech-synthesis/#S3.2.3
+ *   https://www.w3.org/TR/speech-synthesis/#S3.3.1
  */
 
 import PropTypes from 'prop-types';
@@ -13,6 +13,6 @@ export default {
   type: 'audio',
   propTypes: {
     src: PropTypes.string.isRequired,
-    children: none
+    children: PropTypes.any
   }
 };

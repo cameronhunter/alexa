@@ -3,7 +3,7 @@
  * the alias attribute.
  *
  * More info:
- *   https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference#sub
+ *   https://www.w3.org/TR/speech-synthesis/#edef_sub
  */
 
 import PropTypes from 'prop-types';
