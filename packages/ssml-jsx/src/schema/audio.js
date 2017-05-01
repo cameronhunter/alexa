@@ -7,7 +7,6 @@
  */
 
 import PropTypes from 'prop-types';
-import { none } from '../custom-prop-types';
 
 export default {
   type: 'audio',
