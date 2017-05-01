@@ -1,7 +1,7 @@
 const entries = (object) => Object.keys(object).map(key => [key, object[key]]);
 
 export default function renderToString(node, options = {}) {
-  if (!node || node.type !== 'speak') {
+  if (!node || node.elementName !== 'speak') {
     throw Error('Expected SSML to be surrounded in a <speak> tag.');
   }
 
@@ -17,21 +17,21 @@ function render(node, options = {}) {
     return node.map(child => render(child, { ...options, root: false })).join('');
   }
 
-  if (typeof node.type === 'function') {
-    return render(node.type(node.props), { ...options, root: false });
+  if (typeof node.elementName === 'function') {
+    return render(node.elementName({ ...node.attributes, children: node.children }), { ...options, root: false });
   }
 
   if (typeof node === 'string') {
     return node;
   }
 
-  const { children = [], ...rest } = node.props || {};
+  const children = node.children || [];
 
-  if (node.type === 'speak' && !options.root) {
+  if (node.elementName === 'speak' && !options.root) {
     return children.map(child => render(child, { ...options, root: false })).join('');
   }
 
-  const props = entries(rest).reduce((state, [key, value]) => `${state} ${key}="${value}"`, '');
+  const attributes = entries(node.attributes).reduce((state, [key, value]) => `${state} ${key}="${value}"`, '');
 
-  return children.length ? `<${node.type}${props}>${children.map(child => render(child, { ...options, root: false })).join('')}</${node.type}>` : `<${node.type}${props}/>`;
+  return children.length ? `<${node.elementName}${attributes}>${children.map(child => render(child, { ...options, root: false })).join('')}</${node.elementName}>` : `<${node.elementName}${attributes}/>`;
 }

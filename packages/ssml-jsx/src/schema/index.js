@@ -1,3 +1,4 @@
+import amazonEffectTag from './amazon:effect';
 import audio from './audio';
 import breakTag from './break';
 import emphasis from './emphasis';
@@ -11,6 +12,7 @@ import sub from './sub';
 import w from './w';
 
 export default {
+  'amazon:effect': amazonEffectTag,
   audio,
   'break': breakTag,
   emphasis,

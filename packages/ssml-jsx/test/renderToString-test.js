@@ -48,6 +48,16 @@ test('Renders <say-as> tags as a string', t => {
   t.deepEqual(speech, '<speak><say-as interpret-as="characters">Hello world</say-as></speak>');
 });
 
+test('Renders <amazon:effect> tags as a string', t => {
+  const speech = renderToString(
+    <speak>
+      <amazon:effect name='whispered'>Hello world</amazon:effect>
+    </speak>
+  );
+
+  t.deepEqual(speech, '<speak><amazon:effect name="whispered">Hello world</amazon:effect></speak>');
+});
+
 test('Only renders outer <speak> tags', t => {
   const speech = renderToString(
     <speak>

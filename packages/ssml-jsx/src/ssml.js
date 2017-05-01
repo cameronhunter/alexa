@@ -1,15 +1,13 @@
 import schema from './schema/index';
 import PropTypes from 'prop-types';
 
-export default function ssml(tagName, props, ...children) {
+export default function ssml({ elementName: tagName, attributes: props, children }) {
   const tag = throwIfUndefined(getTagDefinition(tagName), `Unsupported tag: "${tagName}"`);
+  const mergedProps = tag.defaultProps ? { ...tag.defaultProps, ...props } : props;
 
-  const hasProps = props || tag.defaultProps || children.length;
-  const mergedProps = hasProps && { ...tag.defaultProps, ...props, ...(children.length && { children }) };
+  PropTypes.checkPropTypes(tag.propTypes, { ...mergedProps, children }, 'prop', tagName);
 
-  PropTypes.checkPropTypes(tag.propTypes, mergedProps, 'prop', tagName);
-
-  return { type: tag.type, ...(mergedProps && { props: mergedProps }) };
+  return { elementName: tag.type, attributes: mergedProps, children };
 };
 
 function throwIfUndefined(item, error) {

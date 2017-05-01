@@ -17,7 +17,7 @@ export default {
         'transform-class-properties',
         'transform-object-rest-spread',
         'transform-export-extensions',
-        ['transform-react-jsx', { pragma: 'ssml' }]
+        ['transform-jsx', { 'function': 'ssml', 'useVariables': true }]
       ]
     })
   ]

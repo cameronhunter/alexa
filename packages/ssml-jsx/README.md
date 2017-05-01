@@ -8,10 +8,10 @@ speech.
 ## Setup
 
 You can use SSML directly in source code by including
-`babel-plugin-transform-react-jsx` in your Babel configuration and importing `ssml` from `ssml-jsx`.
+`babel-plugin-transform-jsx` in your Babel configuration and importing `ssml` from `ssml-jsx`.
 
 ```bash
-$ npm install --save-dev babel-plugin-transform-react-jsx
+$ npm install --save-dev babel-plugin-transform-jsx
 $ npm install --save ssml-jsx
 ```
 
@@ -19,7 +19,7 @@ $ npm install --save ssml-jsx
 ```json
 {
   "plugins": [
-    ["transform-react-jsx", { "pragma": "ssml" }]
+    ["transform-jsx", { "function": "ssml", "useVariables": true }]
   ]
 }
 ```
