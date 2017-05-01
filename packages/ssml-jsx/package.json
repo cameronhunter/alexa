@@ -8,5 +8,12 @@
   "license": "MIT",
   "dependencies": {
     "prop-types": "^15.5.8"
-  }
+  },
+  "keywords": [
+    "alexa",
+    "amazon",
+    "echo",
+    "jsx",
+    "ssml"
+  ]
 }
