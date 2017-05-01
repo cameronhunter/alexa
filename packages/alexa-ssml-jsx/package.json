@@ -8,5 +8,12 @@
   "license": "MIT",
   "dependencies": {
     "ssml-jsx": "^2.0.0"
-  }
+  },
+  "keywords": [
+    "alexa",
+    "amazon",
+    "echo",
+    "jsx",
+    "ssml"
+  ]
 }
