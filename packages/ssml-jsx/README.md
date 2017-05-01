@@ -1,7 +1,7 @@
 # ssml-jsx
 
 Write [SSML](https://www.w3.org/TR/speech-synthesis/) inline within JavaScript. SSML is used in both
-[Amazon Alexa(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
+[Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
 and [Google Home](https://developers.google.com/actions/reference/ssml) devices to provide tight control over device
 speech.
 
