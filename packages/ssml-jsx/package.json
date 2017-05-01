@@ -1,7 +1,7 @@
 {
   "name": "ssml-jsx",
   "description": "Write SSML inline within javascript files using JSX",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/ssml-jsx",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "main": "build/index.min.js",
