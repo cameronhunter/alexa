@@ -1,4 +1,4 @@
-# ssml-jsx
+# ssml-jsx [![NPM Version](https://img.shields.io/npm/v/ssml-jsx.svg)](https://npmjs.org/package/ssml-jsx)
 
 Write [SSML](https://www.w3.org/TR/speech-synthesis/) inline within JavaScript. SSML is used in both
 [Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference)
