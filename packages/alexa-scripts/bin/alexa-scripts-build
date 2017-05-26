@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const cmdline = require('commander');
+const { version } = require('../package.json');
+
+cmdline
+    .version(version)
+    .arguments('<path>', 'Path to Alexa app')
+    .parse(process.argv);
+
+console.log('Building', ...cmdline.args);

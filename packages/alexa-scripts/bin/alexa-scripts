@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const cmdline = require('commander');
+const { version } = require('../package.json');
+
+cmdline
+    .version(version)
+    .command('bootstrap', 'Create a new Alexa app')
+    .command('build', 'Build Alexa app')
+    .command('test', 'Test Alexa app')
+    .command('verify', 'Lint Alexa app')
+    .parse(process.argv);
+
