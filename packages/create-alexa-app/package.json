@@ -1,0 +1,22 @@
+{
+  "name": "create-alexa-app",
+  "description": "Create Alexa apps with no build configuration.",
+  "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "build/index.js",
+  "preferGlobal": true,
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "cosmiconfig": "^2.1.3",
+    "cross-spawn": "^5.1.0",
+    "fs-extra": "^3.0.1",
+    "latest-version": "^3.1.0",
+    "update-notifier": "^2.1.0",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/cameronhunter/alexa/issues"
+  }
+}

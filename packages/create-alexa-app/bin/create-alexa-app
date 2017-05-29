@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+
+const chalk = require('chalk');
+const cmdline = require('commander');
+const cosmiconfig = require('cosmiconfig');
+const createApp = require('../src');
+const os = require('os');
+const path = require('path');
+const updateNotifier = require('update-notifier');
+const { name, bugs, version } = require('../package.json');
+
+updateNotifier({ pkg: { name, version } }).notify();
+
+cmdline
+    .version(version)
+    .arguments('<project-directory>')
+    .usage(`[options] ${chalk.green('<project-directory>')}`)
+    .option('-c, --config', 'Override configuration')
+    .option('-v, --verbose', 'Increase verbosity of logs', (v, total) => total + 1, 0)
+    .allowUnknownOption()
+    .on('--help', () => {
+      console.log('  Example:');
+      console.log();
+      console.log(`    ${chalk.cyan(cmdline.name())} ${chalk.green(path.join(os.homedir(), 'my-app'))}`);
+      console.log();
+      console.log('  If you have any problems, do not hesitate to file an issue:');
+      console.log();
+      console.log(`    ${chalk.cyan(bugs.url)}`);
+      console.log();
+    })
+    .parse(process.argv);
+
+const [projectDirectory] = cmdline.args || [];
+
+if (!projectDirectory) {
+  cmdline.outputHelp();
+  process.exit(1);
+}
+
+const getConfig = (
+  cmdline.config
+    ? cosmiconfig(cmdline.name, { argv: false }).load(null, cmdline.config).then(({ config }) => config)
+    : require('../create-alexa-app.config')
+).catch(
+  (error) => ({
+    name: 'Loading configuration',
+    error
+  }
+));
+
+getConfig.then((config) => {
+  return createApp(projectDirectory, config);
+}).then(() => {
+  console.log();
+  console.log(`Successfully created app in ${chalk.green(projectDirectory)}`);
+}).catch((reason) => {
+  console.log();
+  console.log(chalk.red('Aborting installation.'));
+  console.log();
+
+  if (reason.name && reason.error) {
+    console.log(`${chalk.cyan(reason.name)} has failed.`);
+    console.log();
+    console.log(reason.error);
+  } else {
+    console.log(`${chalk.red('Unexpected error. Please report it as a bug')} (${chalk.cyan(bugs.url)}):`);
+    console.log();
+    console.log(reason);
+  }
+  console.log();
+
+  process.exit(1);
+});
