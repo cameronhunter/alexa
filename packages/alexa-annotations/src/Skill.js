@@ -16,7 +16,7 @@ const Skill = (options) => (Skill) => (event, context, callback) => {
     callback && callback(error);
     return error;
   }).then(response => {
-    if (options.logging !== false) {
+    if (process.env.NODE_ENV !== 'test' && options.logging !== false) {
       console.log(`[${Skill.name}]`, JSON.stringify({ event, response }));
     }
 
