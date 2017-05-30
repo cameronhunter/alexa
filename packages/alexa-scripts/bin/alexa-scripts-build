@@ -2,27 +2,21 @@
 
 'use strict';
 
+const paths = require('../src/paths');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
-const path = require('path');
 const fs = require('fs-extra');
 const webpack = require('webpack');
 const chalk = require('chalk');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const config = require('../config/webpack.config.prod');
 
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-
-const packageJson = require(resolveApp('package.json'));
-const buildDirectory = resolveApp('build');
-
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([packageJson.main])) {
+if (!checkRequiredFiles([paths.appMain])) {
   process.exit(1);
 }
 
 Promise.resolve().then(() => {
-  return fs.emptyDir(buildDirectory);
+  return fs.emptyDir(paths.appBuildDirectory);
 }).then(() => {
   return build(config);
 }).then((warnings) => {
@@ -56,22 +50,22 @@ function build(config) {
         return reject(err);
       }
 
-      const messages = formatWebpackMessages(stats.toJson({}, true));
+      const { errors, warnings } = formatWebpackMessages(stats.toJson({}, true));
 
-      if (messages.errors.length) {
-        return reject(new Error(messages.errors.join('\n\n')));
+      if (errors.length) {
+        return reject(new Error(errors.join('\n\n')));
       }
 
-      if (process.env.CI && messages.warnings.length > 0) {
+      if (process.env.CI && warnings.length > 0) {
         console.log();
         console.log(chalk.yellow('Treating warnings as errors because process.env.CI = true.'));
         console.log(chalk.yellow('Most CI servers set it automatically.'));
         console.log();
 
-        return reject(new Error(messages.warnings.join('\n\n')));
+        return reject(new Error(warnings.join('\n\n')));
       }
 
-      return resolve(messages.warnings);
+      return resolve(warnings);
     });
   });
 }

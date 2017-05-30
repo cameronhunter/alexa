@@ -2,29 +2,22 @@
 
 'use strict';
 
-const fs = require('fs-extra');
-const path = require('path');
 const chalk = require('chalk');
 const clearConsole = require('react-dev-utils/clearConsole');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const webpack = require('webpack');
 const config = require('../config/webpack.config.dev');
-const MemoryFS = require('memory-fs');
-
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-const packageJson = require(resolveApp('package.json'));
+const paths = require('../src/paths');
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([packageJson.main])) {
+if (!checkRequiredFiles([paths.appMain])) {
   process.exit(1);
 }
 
 const isInteractive = process.stdout.isTTY;
 
 const compiler = webpack(config);
-compiler.outputFileSystem = new MemoryFS();
 
 const watcher = compiler.watch({}, (err, stats) => {
   if (isInteractive) {
@@ -39,29 +32,24 @@ const watcher = compiler.watch({}, (err, stats) => {
     return;
   }
 
-  const messages = formatWebpackMessages(stats.toJson({}, true));
+  const { errors, warnings } = formatWebpackMessages(stats.toJson({}, true));
 
-  if (messages.errors.length) {
-    const error = new Error(messages.errors.join('\n\n'));
+  if (errors.length > 0) {
+    const error = new Error(errors.join('\n\n'));
     console.log(chalk.red('Failed to compile.'));
     console.log();
     console.log(error.message || error);
-    console.log();
-    return;
-  }
-
-  if (messages.warnings.length) {
+  } else if (warnings.length > 0) {
     console.log(chalk.yellow('Compiled with warnings.'));
     console.log();
-    console.log(messages.warnings.join('\n\n'));
+    console.log(warnings.join('\n\n'));
     console.log();
     console.log(`Search for the ${chalk.underline(chalk.yellow('keywords'))} to learn more about each warning.`);
     console.log(`To ignore, add ${chalk.cyan('// eslint-disable-next-line')} to the line before.`);
-    console.log();
   } else {
     console.log(chalk.green('Compiled successfully.'));
-    console.log();
   }
+  console.log();
 });
 
 ['SIGINT', 'SIGTERM'].forEach(function(sig) {

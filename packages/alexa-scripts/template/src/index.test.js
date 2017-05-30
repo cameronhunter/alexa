@@ -1,4 +1,4 @@
-import Skill from '../index';
+import Skill from './index';
 import Request from 'alexa-request';
 
 test('LaunchRequest', () => {
