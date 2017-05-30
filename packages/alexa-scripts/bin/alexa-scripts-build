@@ -8,11 +8,7 @@ const fs = require('fs-extra');
 const webpack = require('webpack');
 const chalk = require('chalk');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
-const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 const config = require('../config/webpack.config.prod');
-
-const measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild;
-const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
@@ -25,36 +21,34 @@ if (!checkRequiredFiles([packageJson.main])) {
   process.exit(1);
 }
 
-measureFileSizesBeforeBuild(buildDirectory).then((previousFileSizes) => {
-  return fs.emptyDir(buildDirectory).then(() => build(config, previousFileSizes));
-}).then(({ stats, previousFileSizes, warnings }) => {
+Promise.resolve().then(() => {
+  return fs.emptyDir(buildDirectory);
+}).then(() => {
+  return build(config);
+}).then((warnings) => {
   if (warnings.length) {
-    console.log(chalk.yellow('Compiled with warnings.\n'));
+    console.log(chalk.yellow('Compiled with warnings.'));
+    console.log();
     console.log(warnings.join('\n\n'));
-    console.log(
-      '\nSearch for the ' +
-        chalk.underline(chalk.yellow('keywords')) +
-        ' to learn more about each warning.'
-    );
-    console.log(
-      'To ignore, add ' +
-        chalk.cyan('// eslint-disable-next-line') +
-        ' to the line before.\n'
-    );
+    console.log();
+    console.log(`Search for the ${chalk.underline(chalk.yellow('keywords'))} to learn more about each warning.`);
+    console.log(`To ignore, add ${chalk.cyan('// eslint-disable-next-line')} to the line before.`);
+    console.log();
   } else {
-    console.log(chalk.green('Compiled successfully.\n'));
+    console.log(chalk.green('Compiled successfully.'));
+    console.log();
   }
 
-  console.log('File sizes after gzip:\n');
-  printFileSizesAfterBuild(stats, previousFileSizes, buildDirectory);
   console.log();
 }).catch((err) => {
-  console.log(chalk.red('Failed to compile.\n'));
-  console.log((err.message || err) + '\n');
+  console.log(chalk.red('Failed to compile.'));
+  console.log();
+  console.log(err.message || err);
+  console.log();
   process.exit(1);
 });
 
-function build(config, previousFileSizes) {
+function build(config) {
   const compiler = webpack(config);
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
@@ -69,21 +63,15 @@ function build(config, previousFileSizes) {
       }
 
       if (process.env.CI && messages.warnings.length > 0) {
-        console.log(
-          chalk.yellow(
-            '\nTreating warnings as errors because process.env.CI = true.\n' +
-              'Most CI servers set it automatically.\n'
-          )
-        );
+        console.log();
+        console.log(chalk.yellow('Treating warnings as errors because process.env.CI = true.'));
+        console.log(chalk.yellow('Most CI servers set it automatically.'));
+        console.log();
 
         return reject(new Error(messages.warnings.join('\n\n')));
       }
 
-      return resolve({
-        stats,
-        previousFileSizes,
-        warnings: messages.warnings,
-      });
+      return resolve(messages.warnings);
     });
   });
 }

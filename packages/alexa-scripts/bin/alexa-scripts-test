@@ -1,19 +1,6 @@
 #!/usr/bin/env node
 
 const jest = require('jest');
-const argv = process.argv.slice(2);
+const config = require('../config/jest.config');
 
-const config = {
-  collectCoverageFrom: ['src/**/*.js'],
-  testMatch: [
-    '<rootDir>/src/**/__tests__/**/*.js',
-    '<rootDir>/src/**/?(*.)(spec|test).js',
-  ],
-  testEnvironment: 'node',
-  transform: {
-    '^.+\\.js$': require.resolve('../config/jest/babelTransform')
-  },
-  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.js$']
-};
-
-jest.run([...argv, '--config', JSON.stringify(config)]);
+jest.run([...process.argv.slice(2), '--config', JSON.stringify(config)]);

@@ -32,8 +32,10 @@ const watcher = compiler.watch({}, (err, stats) => {
   }
 
   if (err) {
-    console.log(chalk.red('Failed to compile.\n'));
-    console.log((err.message || err) + '\n');
+    console.log(chalk.red('Failed to compile.'));
+    console.log();
+    console.log(err.message || err);
+    console.log();
     return;
   }
 
@@ -41,26 +43,24 @@ const watcher = compiler.watch({}, (err, stats) => {
 
   if (messages.errors.length) {
     const error = new Error(messages.errors.join('\n\n'));
-    console.log(chalk.red('Failed to compile.\n'));
-    console.log((error.message || error) + '\n');
+    console.log(chalk.red('Failed to compile.'));
+    console.log();
+    console.log(error.message || error);
+    console.log();
     return;
   }
 
   if (messages.warnings.length) {
-    console.log(chalk.yellow('Compiled with warnings.\n'));
+    console.log(chalk.yellow('Compiled with warnings.'));
+    console.log();
     console.log(messages.warnings.join('\n\n'));
-    console.log(
-      '\nSearch for the ' +
-        chalk.underline(chalk.yellow('keywords')) +
-        ' to learn more about each warning.'
-    );
-    console.log(
-      'To ignore, add ' +
-        chalk.cyan('// eslint-disable-next-line') +
-        ' to the line before.\n'
-    );
+    console.log();
+    console.log(`Search for the ${chalk.underline(chalk.yellow('keywords'))} to learn more about each warning.`);
+    console.log(`To ignore, add ${chalk.cyan('// eslint-disable-next-line')} to the line before.`);
+    console.log();
   } else {
-    console.log(chalk.green('Compiled successfully.\n'));
+    console.log(chalk.green('Compiled successfully.'));
+    console.log();
   }
 });
 
