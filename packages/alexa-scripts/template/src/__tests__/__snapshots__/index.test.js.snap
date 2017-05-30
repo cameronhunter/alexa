@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hello intent 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Hello world",
+      "title": "Alexa App",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "text": "Hello world",
+      "type": "PlainText",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`LaunchRequest 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "text": "Alexa app launched!",
+      "type": "PlainText",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;

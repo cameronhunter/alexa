@@ -2,12 +2,88 @@
 
 'use strict';
 
-const cmdline = require('commander');
-const { version } = require('../package.json');
+const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
+const path = require('path');
+const fs = require('fs-extra');
+const webpack = require('webpack');
+const chalk = require('chalk');
+const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
+const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
+const config = require('../config/webpack.config.prod');
 
-cmdline
-    .version(version)
-    .arguments('<path>', 'Path to Alexa app')
-    .parse(process.argv);
+const measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild;
+const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
 
-console.log('Building', ...cmdline.args);
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
+const packageJson = require(resolveApp('package.json'));
+const buildDirectory = resolveApp('build');
+
+// Warn and crash if required files are missing
+if (!checkRequiredFiles([packageJson.main])) {
+  process.exit(1);
+}
+
+measureFileSizesBeforeBuild(buildDirectory).then((previousFileSizes) => {
+  return fs.emptyDir(buildDirectory).then(() => build(config, previousFileSizes));
+}).then(({ stats, previousFileSizes, warnings }) => {
+  if (warnings.length) {
+    console.log(chalk.yellow('Compiled with warnings.\n'));
+    console.log(warnings.join('\n\n'));
+    console.log(
+      '\nSearch for the ' +
+        chalk.underline(chalk.yellow('keywords')) +
+        ' to learn more about each warning.'
+    );
+    console.log(
+      'To ignore, add ' +
+        chalk.cyan('// eslint-disable-next-line') +
+        ' to the line before.\n'
+    );
+  } else {
+    console.log(chalk.green('Compiled successfully.\n'));
+  }
+
+  console.log('File sizes after gzip:\n');
+  printFileSizesAfterBuild(stats, previousFileSizes, buildDirectory);
+  console.log();
+}).catch((err) => {
+  console.log(chalk.red('Failed to compile.\n'));
+  console.log((err.message || err) + '\n');
+  process.exit(1);
+});
+
+function build(config, previousFileSizes) {
+  const compiler = webpack(config);
+  return new Promise((resolve, reject) => {
+    compiler.run((err, stats) => {
+      if (err) {
+        return reject(err);
+      }
+
+      const messages = formatWebpackMessages(stats.toJson({}, true));
+
+      if (messages.errors.length) {
+        return reject(new Error(messages.errors.join('\n\n')));
+      }
+
+      if (process.env.CI && messages.warnings.length > 0) {
+        console.log(
+          chalk.yellow(
+            '\nTreating warnings as errors because process.env.CI = true.\n' +
+              'Most CI servers set it automatically.\n'
+          )
+        );
+
+        return reject(new Error(messages.warnings.join('\n\n')));
+      }
+
+      return resolve({
+        stats,
+        previousFileSizes,
+        warnings: messages.warnings,
+      });
+    });
+  });
+}

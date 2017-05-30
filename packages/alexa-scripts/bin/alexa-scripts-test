@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 
-'use strict';
+const jest = require('jest');
+const argv = process.argv.slice(2);
 
-const cmdline = require('commander');
-const { version } = require('../package.json');
+const config = {
+  collectCoverageFrom: ['src/**/*.js'],
+  testMatch: [
+    '<rootDir>/src/**/__tests__/**/*.js',
+    '<rootDir>/src/**/?(*.)(spec|test).js',
+  ],
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\.js$': require.resolve('../config/jest/babelTransform')
+  },
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.js$']
+};
 
-cmdline
-    .version(version)
-    .arguments('<path>', 'Path to Alexa app')
-    .parse(process.argv);
-
-console.log('Testing', ...cmdline.args);
+jest.run([...argv, '--config', JSON.stringify(config)]);

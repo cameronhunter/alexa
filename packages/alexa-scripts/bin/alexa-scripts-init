@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const cmdline = require('commander');
+const { version } = require('../package.json');
+const path = require('path');
+const fs = require('fs-extra');
+const spawn = require('cross-spawn');
+
+cmdline
+    .version(version)
+    .arguments('<path>', 'Path to app')
+    .parse(process.argv);
+
+const [root] = cmdline.args || [];
+
+const setupPackage = (root) => () => {
+  const packageJson = require(path.join(root, 'package.json'));
+
+  const newPackageJson = Object.assign({}, packageJson, {
+    main: './src/index.js',
+    scripts: Object.assign({}, packageJson.scripts, {
+      start: 'alexa-scripts start',
+      build: 'alexa-scripts build',
+      test: 'alexa-scripts test'
+    }),
+    dependencies: Object.assign({}, packageJson.dependencies, {
+      'alexa-response': '*',
+      'alexa-annotations': '*',
+      'ssml-jsx': '*'
+    }),
+    devDependencies: Object.assign({}, packageJson.devDependencies, {
+      'alexa-request': '*'
+    }),
+    keywords: [
+      ...new Set([
+        ...(packageJson.keywords || []),
+        'alexa',
+        'alexa-skill',
+        'amazon-echo',
+        'create-alexa-app',
+        'echo'
+      ])
+    ].sort()
+  });
+
+  return fs.writeJson(path.join(root, 'package.json'), newPackageJson, { spaces: 2 }).then(() => root);
+};
+
+const copyTemplate = (root) => {
+  const template = path.join(__dirname, '..', 'template');
+  return fs.copy(template, root).then(() => root);
+};
+
+const run = (command, ...args) => new Promise((resolve, reject) => {
+  spawn(command, args, { stdio: 'inherit' }).on('close', (exitCode) => {
+    if (exitCode !== 0) {
+      reject(`${command} ${args.join(' ')}`);
+    } else {
+      resolve();
+    }
+  });
+});
+
+const installDependencies = (root) => {
+  process.chdir(root);
+  return run('npm', 'install');
+};
+
+Promise.resolve().then(setupPackage(root)).then(copyTemplate).then(installDependencies).then(() => {
+  console.log('Initialization complete');
+}).catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
