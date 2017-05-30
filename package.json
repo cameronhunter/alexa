@@ -1,4 +1,7 @@
 {
+  "name": "alexa",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "clean": "lerna clean",
     "bootstrap": "lerna bootstrap",
@@ -39,5 +42,8 @@
     "require": [
       "babel-register"
     ]
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.5.1"
   }
 }

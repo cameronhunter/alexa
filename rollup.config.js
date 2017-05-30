@@ -11,7 +11,7 @@ export default {
   plugins: [
     babel({
       babelrc: false,
-      presets: [['env', { targets: { node: 6.10 }, modules: false }]],
+      presets: [['env', { targets: { node: '6.10' }, modules: false }]],
       plugins: [
         'transform-decorators-legacy',
         'transform-class-properties',
