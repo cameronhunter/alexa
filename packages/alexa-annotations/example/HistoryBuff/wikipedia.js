@@ -1,8 +1,10 @@
+const values = (obj = {}) => Object.keys(obj).map((key) => obj[key]);
+
 export default (month, date) => (
   fetch(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&explaintext=&exsectionformat=plain&redirects=&titles=${month}_${date}`)
     .then(response => response.json())
     .then(response => {
-      const [{ extract }] = Object.values(response.query.pages);
+      const [{ extract }] = values(response.query.pages);
       return parseWikiText(extract).map(cleanupEventText);
     })
     .then(events => events.length ? Promise.resolve(events) : Promise.reject())

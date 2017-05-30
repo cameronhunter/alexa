@@ -1,3 +1,5 @@
+const values = (obj = {}) => Object.keys(obj).map((key) => obj[key]);
+
 const Appliances = {
   'living-room': {
     brightness: 0,
@@ -28,7 +30,7 @@ const Appliances = {
 };
 
 export const devices = () => {
-  return Promise.resolve(Object.values(Appliances).map(_ => _.device));
+  return Promise.resolve(values(Appliances).map(_ => _.device));
 };
 
 export const brightness = (applianceId, value) => {

@@ -1,5 +1,7 @@
 import annotation from '../annotation';
 
+const values = (obj = {}) => Object.keys(obj).map((key) => obj[key]);
+
 export default (...names) => annotation(
   ({ request = {} }) => {
     const { type, intent = {} } = request;
@@ -9,7 +11,7 @@ export default (...names) => annotation(
   ({ request = {} }) => {
     const { intent = {} } = request;
     const { slots = {} } = intent;
-    return Object.values(slots).reduce((state, { name, value }) => {
+    return values(slots).reduce((state, { name, value }) => {
       return (name && value != null) ? { ...state, [name]: value } : state;
     }, {});
   }
