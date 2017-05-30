@@ -1,8 +1,12 @@
 {
   "parser": "babel-eslint",
   "env": {
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
+  "plugins": [
+    "jest"
+  ],
   "globals": {
     "Promise": true,
     "fetch": true

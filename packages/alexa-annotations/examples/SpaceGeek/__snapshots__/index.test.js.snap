@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GetNewFactIntent 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Here's your space fact: A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event.",
+      "title": "SpaceGeek",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "text": "Here's your space fact: A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event.",
+      "type": "PlainText",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`LaunchRequest 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Here's your space fact: A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event.",
+      "title": "SpaceGeek",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "text": "Here's your space fact: A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event.",
+      "type": "PlainText",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;

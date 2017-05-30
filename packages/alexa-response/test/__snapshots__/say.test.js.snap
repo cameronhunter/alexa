@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlainText 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "text": "Hello world",
+      "type": "PlainText",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`SSML 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "ssml": "<speak><p>Hello World.</p> <p>What do you want to do today?</p></speak>",
+      "type": "SSML",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Only renders outer <speak> tags 1`] = `"<speak><s>Hello</s><s>world</s></speak>"`;
+
+exports[`Renders <amazon:effect> tags as a string 1`] = `"<speak><amazon:effect name=\\"whispered\\">Hello world</amazon:effect></speak>"`;
+
+exports[`Renders <break> tags as a string 1`] = `"<speak><s>Hello world</s><break time=\\"2s\\"/></speak>"`;
+
+exports[`Renders <p> tags as a string 1`] = `"<speak><p>Hello world</p></speak>"`;
+
+exports[`Renders <s> tags as a string 1`] = `"<speak><s>Hello world</s></speak>"`;
+
+exports[`Renders <say-as> tags as a string 1`] = `"<speak><say-as interpret-as=\\"characters\\">Hello world</say-as></speak>"`;
+
+exports[`Renders <speak> tags as a string 1`] = `"<speak>Hello world</speak>"`;
+
+exports[`Renders custom tags 1`] = `"<speak><s>Hello world</s><s>How are you doing today?</s></speak>"`;
+
+exports[`Renders deeply 1`] = `"<speak><p><s>Hello</s><s>world</s></p></speak>"`;

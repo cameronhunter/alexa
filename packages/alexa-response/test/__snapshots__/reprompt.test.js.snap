@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlainText 1`] = `
+Object {
+  "response": Object {
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "Can you repeat that?",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`SSML 1`] = `
+Object {
+  "response": Object {
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "ssml": "<speak>Can you repeat that?</speak>",
+        "type": "SSML",
+      },
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;

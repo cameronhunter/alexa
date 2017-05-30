@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LaunchRequest 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "text": "Welcome to the Minecraft Helper. You can ask a question like, what's the recipe for a chest? ... Now, what can I help you with.",
+      "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "For instructions on what you can say, please say help me.",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`No recipe 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "text": "I'm sorry, I currently do not know that recipe. What else can I help with?",
+      "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "What else can I help with?",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`RecipeIntent 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Farmland can be created by plowing the land with a hoe.",
+      "title": "Recipe for Farmland",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "text": "Farmland can be created by plowing the land with a hoe.",
+      "type": "PlainText",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`Unknown recipe 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "text": "I'm sorry, I currently do not know the recipe for Coffee. What else can I help with?",
+      "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "What else can I help with?",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;

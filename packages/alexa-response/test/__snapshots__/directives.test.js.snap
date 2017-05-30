@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add multiple directives 1`] = `
+Object {
+  "response": Object {
+    "directives": Array [
+      Object {
+        "audioItem": Object {
+          "stream": Object {
+            "url": "http://stream-1.url",
+          },
+        },
+        "playBehavior": "REPLACE_ALL",
+        "type": "AudioPlayer.Play",
+      },
+      Object {
+        "audioItem": Object {
+          "stream": Object {
+            "url": "http://stream-2.url",
+          },
+        },
+        "playBehavior": "ENQUEUE",
+        "type": "AudioPlayer.Play",
+      },
+    ],
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`Add single directive 1`] = `
+Object {
+  "response": Object {
+    "directives": Array [
+      Object {
+        "type": "AudioPlayer.Stop",
+      },
+    ],
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;

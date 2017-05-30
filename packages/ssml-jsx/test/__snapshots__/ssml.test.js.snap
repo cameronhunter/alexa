@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`creates an object containing a type key 1`] = `
+Object {
+  "attributes": Object {},
+  "children": Array [
+    "Hello world",
+  ],
+  "elementName": "speak",
+}
+`;
+
+exports[`creates an object containing type and children keys 1`] = `
+Object {
+  "attributes": Object {},
+  "children": Array [
+    Object {
+      "attributes": Object {},
+      "children": Array [
+        "This is a sentence",
+      ],
+      "elementName": "s",
+    },
+  ],
+  "elementName": "speak",
+}
+`;
+
+exports[`creates an object containing type and props keys 1`] = `
+Object {
+  "attributes": Object {
+    "strength": "medium",
+  },
+  "children": null,
+  "elementName": "break",
+}
+`;
+
+exports[`handles custom tags 1`] = `
+Object {
+  "attributes": Object {
+    "name": "world",
+    "template": "Hello {name}",
+  },
+  "children": null,
+  "elementName": [Function],
+}
+`;

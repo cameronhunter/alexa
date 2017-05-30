@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`launch 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "History Buff. What day do you want events for?",
+      "title": "This Day in History",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "ssml": "<speak><p>History buff.</p><p>What day do you want events for?</p></speak>",
+      "type": "SSML",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "With History Buff, you can get historical events for any day of the year. For example, you could say today, or August thirtieth. Now, which day do you want?",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;

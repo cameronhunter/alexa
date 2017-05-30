@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlainText 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Testing if this thing works",
+      "title": "Test",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "text": "Does this work?",
+      "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "Well? Does it?",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`SSML 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Testing if this thing works",
+      "title": "Test",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "ssml": "<speak>Does this work?</speak>",
+      "type": "SSML",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "Well? Does it?",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`chaining 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Content",
+      "title": "Title",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "text": "Hello",
+      "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "Reprompt",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;

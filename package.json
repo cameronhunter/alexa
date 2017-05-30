@@ -10,15 +10,14 @@
     "prebuild": "npm run bootstrap",
     "build": "npm-run-all --parallel build:dev build:production",
     "pretest": "npm run build",
-    "test": "ava ./packages/*/test/*test.js ./packages/*/example/*test.js",
+    "test": "jest",
     "posttest": "npm run lint",
-    "lint": "eslint ./packages/**/src/*.js ./packages/**/src/**/*.js ./packages/**/test/**/*.js ./packages/**/example/**/*.js",
+    "lint": "eslint ./packages",
     "prepublish": "npm run test",
     "publish": "lerna publish",
     "lerna": "lerna"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
     "babel-eslint": "^7.1.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.18.0",
@@ -26,24 +25,19 @@
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-jsx": "^2.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.4.0",
+    "babel-preset-env": "^1.5.1",
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-register": "^6.18.0",
     "eslint": "^3.9.1",
+    "eslint-plugin-jest": "^20.0.3",
     "isomorphic-fetch": "^2.2.1",
+    "jest": "^20.0.4",
     "lerna": "2.0.0-beta.30",
     "npm-run-all": "^4.0.2",
     "rollup": "^0.41.6",
-    "rollup-plugin-babel": "^2.6.1",
-    "sinon": "^2.1.0"
+    "rollup-plugin-babel": "^2.6.1"
   },
-  "ava": {
-    "babel": "inherit",
-    "require": [
-      "babel-register"
-    ]
-  },
-  "dependencies": {
-    "babel-preset-env": "^1.5.1"
+  "jest": {
+    "testEnvironment": "node"
   }
 }

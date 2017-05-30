@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkAccount 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "type": "LinkAccount",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`Simple 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "This is the card content",
+      "title": "Title",
+      "type": "Simple",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;

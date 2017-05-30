@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AMAZON.HelpIntent 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "text": "You can say hello to me!",
+      "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "You can say hello to me!",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`Credits 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Credits: Cameron Hunter <hello@cameronhunter.co.uk> (http://cameronhunter.co.uk)",
+      "title": "Hello World",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "text": "Hello World was created by Cameron Hunter",
+      "type": "PlainText",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`HelloWorldIntent 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Hello World!",
+      "title": "Greeter",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "text": "Hello World!",
+      "type": "PlainText",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`LaunchRequest 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "text": "Welcome to the Alexa Skills Kit, you can say hello",
+      "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "You can say hello",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;

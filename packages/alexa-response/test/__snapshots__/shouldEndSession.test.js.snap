@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`false 1`] = `
+Object {
+  "response": Object {
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`true 1`] = `
+Object {
+  "response": Object {
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
