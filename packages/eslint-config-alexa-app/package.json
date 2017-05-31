@@ -1,0 +1,20 @@
+{
+  "name": "eslint-config-alexa-app",
+  "version": "0.0.0",
+  "description": "ESLint configuration used by Create Alexa App",
+  "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/ssml-jsx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cameronhunter/alexa/issues"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src/index.js"
+  ],
+  "peerDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
+    "eslint-plugin-flowtype": "^2.33.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
