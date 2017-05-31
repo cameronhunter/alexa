@@ -1,13 +1,13 @@
 {
   "name": "alexa-ssml-jsx",
   "description": "Write SSML inline within javascript files using JSX",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-ssml-jsx",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "main": "build/index.min.js",
   "license": "MIT",
   "dependencies": {
-    "ssml-jsx": "^2.0.1"
+    "ssml-jsx": "^2.0.2"
   },
   "keywords": [
     "alexa",

@@ -1,7 +1,7 @@
 {
   "name": "alexa-scripts",
   "description": "Configuration and scripts for Create Alexa App",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-scripts",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "commander": "^2.9.0",
     "cross-spawn": "^5.1.0",
     "eslint": "^3.19.0",
-    "eslint-config-alexa-app": "^1.0.0",
+    "eslint-config-alexa-app": "^1.0.1",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-flowtype": "^2.33.0",
     "eslint-plugin-import": "^2.3.0",
