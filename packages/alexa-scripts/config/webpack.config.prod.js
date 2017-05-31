@@ -28,9 +28,8 @@ module.exports = {
   // The build folder
   output: {
     path: buildDirectory,
-    filename: '[name].[chunkhash:8].js',
-    libraryTarget: 'commonjs',
-    library: 'handler'
+    filename: 'index.js',
+    libraryTarget: 'commonjs'
   },
 
   resolve: {

@@ -3,14 +3,17 @@ const fs = require('fs-extra');
 
 const appRootDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appRootDirectory, relativePath);
-const appPackage = resolveApp('package.json');
-const appPackageJson = require(appPackage);
+const appPackageJson = resolveApp('package.json');
+const { main: appMain } = require(appPackageJson);
+const appBuildDirectory = resolveApp('build');
 
 module.exports = {
-  appBuildDirectory: resolveApp('build'),
-  appMain: appPackageJson.main,
+  appBuildDirectory,
+  appMain: resolveApp(appMain),
   appModules: resolveApp('node_modules'),
-  appPackage,
+  appPackageJson,
+  appBuildBundle: resolveApp('./build/index.js'),
+  appBuildPackage: resolveApp('./build/package.zip'),
   appRootDirectory,
   appSrc: resolveApp('src')
 };
