@@ -15,5 +15,6 @@ module.exports = {
   appBuildBundle: resolveApp('./build/index.js'),
   appBuildPackage: resolveApp('./build/package.zip'),
   appRootDirectory,
-  appSrc: resolveApp('src')
+  appSrc: resolveApp('src'),
+  dotenv: resolveApp('.env')
 };

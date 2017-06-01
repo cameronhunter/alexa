@@ -7,6 +7,9 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('../src/paths');
+const getEnvironment = require('../src/env');
+
+const env = getEnvironment();
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -115,11 +118,7 @@ module.exports = {
   plugins: [
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development')
-      }
-    }),
+    new webpack.DefinePlugin(env.stringified),
     // Watcher doesn't work well if you mistype casing in a path so we use
     // a plugin that prints an error when you attempt to do this.
     // See https://github.com/facebookincubator/create-react-app/issues/240
