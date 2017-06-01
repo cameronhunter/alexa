@@ -61,7 +61,10 @@ const plugins = [
   require.resolve('babel-plugin-transform-decorators-legacy'),
 
   // Convert exports to commonjs
-  require.resolve('babel-plugin-add-module-exports')
+  require.resolve('babel-plugin-add-module-exports'),
+
+  // Add export extensions
+  require.resolve('babel-plugin-transform-export-extensions')
 ];
 
 // This is similar to how `env` works in Babel:
