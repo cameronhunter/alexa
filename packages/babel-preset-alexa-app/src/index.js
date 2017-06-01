@@ -14,6 +14,9 @@ const presets = [
 ];
 
 const plugins = [
+  // Add support for decorators
+  require.resolve('babel-plugin-transform-decorators-legacy'),
+
   // class { handleClick = () => { } }
   require.resolve('babel-plugin-transform-class-properties'),
 
@@ -24,6 +27,9 @@ const plugins = [
       useBuiltIns: true
     },
   ],
+
+  // Add export extensions
+  require.resolve('babel-plugin-transform-export-extensions'),
 
   // Transforms SSML
   [
@@ -57,14 +63,8 @@ const plugins = [
   // Adds syntax support for import()
   require.resolve('babel-plugin-syntax-dynamic-import'),
 
-  // Add support for decorators
-  require.resolve('babel-plugin-transform-decorators-legacy'),
-
   // Convert exports to commonjs
-  require.resolve('babel-plugin-add-module-exports'),
-
-  // Add export extensions
-  require.resolve('babel-plugin-transform-export-extensions')
+  // require.resolve('babel-plugin-add-module-exports'),
 ];
 
 // This is similar to how `env` works in Babel:
