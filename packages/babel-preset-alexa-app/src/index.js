@@ -1,18 +1,3 @@
-const presets = [
-  // Latest stable ECMAScript features available on AWS Lambda
-  [
-    require.resolve('babel-preset-env'),
-    {
-      targets: {
-        node: '6.10'
-      }
-    }
-  ],
-
-  // Flow
-  require.resolve('babel-preset-flow')
-];
-
 const plugins = [
   // Add support for decorators
   require.resolve('babel-plugin-transform-decorators-legacy'),
@@ -84,7 +69,21 @@ if (env !== 'development' && env !== 'test' && env !== 'production') {
   );
 }
 
-module.exports = {
-  presets,
-  plugins
+module.exports = (context, opts = {}) => {
+  return {
+    presets: [
+      // Latest stable ECMAScript features available on AWS Lambda
+      [
+        require.resolve('babel-preset-env'),
+        Object.assign(
+          { targets: { node: '6.10' } },
+          opts && opts.modules !== undefined ? { modules: opts.modules } : undefined
+        )
+      ],
+
+      // Flow
+      require.resolve('babel-preset-flow')
+    ],
+    plugins
+  };
 };
