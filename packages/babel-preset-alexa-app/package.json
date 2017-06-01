@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-alexa-app",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Babel preset used by Create Alexa App",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-scripts",
   "license": "MIT",

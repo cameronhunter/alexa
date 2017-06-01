@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-alexa-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ESLint configuration used by Create Alexa App",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/ssml-jsx",
   "license": "MIT",
