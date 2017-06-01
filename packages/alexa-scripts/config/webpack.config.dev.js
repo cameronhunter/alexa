@@ -6,14 +6,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const fs = require('fs-extra');
-const babelConfig = require('./babel.config');
-
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-
-const packageJson = require(resolveApp('package.json'));
-const buildDirectory = resolveApp('build');
+const paths = require('../src/paths');
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -29,11 +22,11 @@ module.exports = {
     // We ship a few polyfills by default:
     require.resolve('babel-polyfill'),
     // Finally, this is your app's code:
-    packageJson.main
+    paths.appMain
   ],
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
-    path: buildDirectory,
+    path: paths.appBuildDirectory,
     // Add /* filename */ comments to generated require()s in the output.
     pathinfo: true,
     // This does not produce a real file. It's just the virtual path that is
@@ -52,7 +45,7 @@ module.exports = {
     // We placed these paths second because we want `node_modules` to "win"
     // if there are any conflicts. This matches Node resolution mechanism.
     // https://github.com/facebookincubator/create-react-app/issues/253
-    modules: ['node_modules', resolveApp('node_modules')].concat(
+    modules: ['node_modules', paths.appModules].concat(
       // FIXME: Maybe not true
       // It is guaranteed to exist because we tweak it in `env.js`
       (process.env.NODE_PATH || '').split(path.delimiter).filter(Boolean)
@@ -74,7 +67,7 @@ module.exports = {
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(resolveApp('src')),
+      new ModuleScopePlugin(paths.appSrc),
     ],
   },
   module: {
@@ -100,20 +93,22 @@ module.exports = {
             loader: require.resolve('eslint-loader'),
           },
         ],
-        include: resolveApp('src'),
+        include: paths.appSrc,
       },
 
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
-        include: resolveApp('src'),
+        include: paths.appSrc,
         loader: require.resolve('babel-loader'),
-        options: Object.assign({}, babelConfig, {
+        options: {
+          babelrc: false,
+          presets: [require.resolve('babel-preset-alexa-app')],
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
           cacheDirectory: true
-        })
+        }
       }
     ]
   },
@@ -133,7 +128,7 @@ module.exports = {
     // to restart the development server for Webpack to discover it. This plugin
     // makes the discovery automatic so you don't have to restart.
     // See https://github.com/facebookincubator/create-react-app/issues/186
-    new WatchMissingNodeModulesPlugin(resolveApp('node_modules')),
+    new WatchMissingNodeModulesPlugin(paths.appModules),
     // Moment.js is an extremely popular library that bundles large locale files
     // by default due to how Webpack interprets its code. This is a practical
     // solution that requires the user to opt into importing specific locales.

@@ -1,4 +1,6 @@
 const babelJest = require('babel-jest');
-const config = require('../babel.config');
 
-module.exports = babelJest.createTransformer(config);
+module.exports = babelJest.createTransformer({
+  babelrc: false,
+  presets: [require.resolve('babel-preset-alexa-app')]
+});

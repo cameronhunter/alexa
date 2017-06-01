@@ -3,7 +3,6 @@ const fs = require('fs-extra');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const webpack = require('webpack');
-const babelConfig = require('./babel.config');
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
@@ -82,7 +81,10 @@ module.exports = {
         test: /\.js$/,
         include: resolveApp('src'),
         loader: require.resolve('babel-loader'),
-        options: babelConfig,
+        options: {
+          babelrc: false,
+          presets: [require.resolve('babel-preset-alexa-app')]
+        },
       }
     ]
   },
