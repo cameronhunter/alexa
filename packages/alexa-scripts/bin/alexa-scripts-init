@@ -7,6 +7,7 @@ const { version } = require('../package.json');
 const path = require('path');
 const fs = require('fs-extra');
 const spawn = require('cross-spawn');
+const { format } = require('prettier-package-json');
 
 cmdline
     .version(version)
@@ -42,10 +43,10 @@ const setupPackage = (root) => () => {
         'create-alexa-app',
         'echo'
       ])
-    ].sort()
+    ]
   });
 
-  return fs.writeJson(path.join(root, 'package.json'), newPackageJson, { spaces: 2 }).then(() => root);
+  return fs.writeFile(path.join(root, 'package.json'), format(newPackageJson)).then(() => root);
 };
 
 const copyTemplate = (root) => {
