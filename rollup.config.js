@@ -11,14 +11,7 @@ export default {
   plugins: [
     babel({
       babelrc: false,
-      presets: [['env', { targets: { node: '6.10' }, modules: false }]],
-      plugins: [
-        'transform-decorators-legacy',
-        'transform-class-properties',
-        'transform-object-rest-spread',
-        'transform-export-extensions',
-        ['transform-jsx', { 'function': 'ssml', 'useVariables': true }]
-      ]
+      presets: [['alexa-app', { modules: false }]]
     })
   ]
 };

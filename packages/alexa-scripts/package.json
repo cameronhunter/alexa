@@ -13,7 +13,7 @@
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-alexa-app": "^0.0.0",
+    "babel-preset-alexa-app": "^1.0.0",
     "bestzip": "^1.1.4",
     "case-sensitive-paths-webpack-plugin": "^2.0.0",
     "chalk": "^1.1.3",
