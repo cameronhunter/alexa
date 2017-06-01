@@ -1,0 +1,30 @@
+{
+  "name": "babel-preset-alexa-app",
+  "version": "0.0.0",
+  "description": "Babel preset used by Create Alexa App",
+  "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-scripts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cameronhunter/alexa/issues"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src/index.js"
+  ],
+  "dependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dynamic-import-node": "1.0.2",
+    "babel-plugin-syntax-dynamic-import": "6.18.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-jsx": "^2.0.0",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "babel-plugin-transform-regenerator": "6.24.1",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-env": "1.4.0",
+    "babel-preset-flow": "^6.23.0"
+  },
+  "peerDependencies": {
+    "babel-runtime": "^6.23.0"
+  }
+}
