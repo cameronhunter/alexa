@@ -1,10 +1,10 @@
 {
   "name": "alexa-scripts",
   "description": "Configuration and scripts for Create Alexa App",
-  "version": "0.2.3",
-  "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-scripts",
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
+  "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-scripts",
+  "version": "0.2.3",
   "bin": {
     "alexa-scripts": "./bin/alexa-scripts"
   },

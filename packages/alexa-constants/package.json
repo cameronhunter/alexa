@@ -1,24 +1,20 @@
 {
   "name": "alexa-constants",
   "description": "Constants used in Amazon Alexa requests and responses",
-  "version": "0.4.1",
-  "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-constants",
-  "author": {
-    "name": "Cameron Hunter",
-    "email": "hello@cameronhunter.co.uk",
-    "url": "http://cameronhunter.co.uk"
-  },
-  "main": "build/index.min.js",
+  "author": "Cameron Hunter <hello@cameronhunter.co.uk> (http://cameronhunter.co.uk)",
   "license": "MIT",
+  "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-constants",
+  "version": "0.4.1",
+  "main": "build/index.min.js",
   "files": [
     "build",
     "src"
   ],
   "keywords": [
     "alexa",
-    "echo",
-    "skill",
     "amazon",
-    "lambda"
+    "echo",
+    "lambda",
+    "skill"
   ]
 }
