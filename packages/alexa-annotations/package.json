@@ -4,20 +4,20 @@
   "author": "Cameron Hunter <hello@cameronhunter.co.uk> (http://cameronhunter.co.uk)",
   "license": "MIT",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-annotations",
-  "version": "9.1.6",
+  "version": "9.1.7",
   "main": "build/index.min.js",
   "files": [
     "build",
     "src"
   ],
   "dependencies": {
-    "alexa-constants": "^0.4.1",
+    "alexa-constants": "^0.4.2",
     "bluebird": "^3.3.4",
     "object-values": "^1.0.0",
     "uuid": "^2.0.3"
   },
   "devDependencies": {
-    "alexa-request": "^0.3.2"
+    "alexa-request": "^0.3.3"
   },
   "keywords": [
     "alexa",

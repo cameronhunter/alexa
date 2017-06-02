@@ -4,14 +4,14 @@
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-request",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "build/index.min.js",
   "files": [
     "build",
     "src"
   ],
   "dependencies": {
-    "alexa-constants": "^0.4.1"
+    "alexa-constants": "^0.4.2"
   },
   "keywords": [
     "alexa",

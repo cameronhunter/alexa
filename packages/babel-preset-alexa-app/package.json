@@ -6,7 +6,7 @@
   "bugs": {
     "url": "https://github.com/cameronhunter/alexa/issues"
   },
-  "version": "1.4.1",
+  "version": "1.4.2",
   "main": "src/index.js",
   "files": [
     "src/index.js"
