@@ -8,6 +8,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const spawn = require('cross-spawn');
 const { format } = require('prettier-package-json');
+const latestVersion = require('latest-version');
 
 cmdline
     .version(version)
@@ -17,35 +18,48 @@ cmdline
 const [root] = cmdline.args || [];
 
 const setupPackage = (root) => () => {
-  const packageJson = require(path.join(root, 'package.json'));
+  const dependencies = [
+    'alexa-annotations',
+    'alexa-response',
+    'alexa-request'
+  ];
 
-  const newPackageJson = Object.assign({}, packageJson, {
-    main: './src/index.js',
-    scripts: Object.assign({}, packageJson.scripts, {
-      start: 'alexa-scripts start',
-      build: 'alexa-scripts build',
-      test: 'alexa-scripts test'
-    }),
-    dependencies: Object.assign({}, packageJson.dependencies, {
-      'alexa-annotations': '*',
-      'alexa-response': '*'
-    }),
-    devDependencies: Object.assign({}, packageJson.devDependencies, {
-      'alexa-request': '*'
-    }),
-    keywords: [
-      ...new Set([
-        ...(packageJson.keywords || []),
-        'alexa',
-        'alexa-skill',
-        'amazon-echo',
-        'create-alexa-app',
-        'echo'
-      ])
-    ]
+  return Promise.all(
+    dependencies.map((dependency) => latestVersion(dependency).then((version) => ({ [dependency]: `^${version}` })))
+  ).then((deps) => {
+    return deps.reduce((a, b) => Object.assign({}, a, b));
+  }).then((deps) => {
+    const packageJson = require(path.join(root, 'package.json'));
+    return Object.assign({}, packageJson, {
+      main: './src/index.js',
+      scripts: Object.assign({}, packageJson.scripts, {
+        start: 'alexa-scripts start',
+        build: 'alexa-scripts build',
+        test: 'alexa-scripts test'
+      }),
+      dependencies: Object.assign({}, packageJson.dependencies, {
+        'alexa-annotations': deps['alexa-annotations'],
+        'alexa-response': deps['alexa-response']
+      }),
+      devDependencies: Object.assign({}, packageJson.devDependencies, {
+        'alexa-request': deps['alexa-request']
+      }),
+      keywords: [
+        ...new Set([
+          ...(packageJson.keywords || []),
+          'alexa',
+          'alexa-skill',
+          'amazon-echo',
+          'create-alexa-app',
+          'echo'
+        ])
+      ]
+    });
+  }).then((newPackageJson) => {
+    return fs.writeFile(path.join(root, 'package.json'), format(newPackageJson));
+  }).then(() => {
+    return root;
   });
-
-  return fs.writeFile(path.join(root, 'package.json'), format(newPackageJson)).then(() => root);
 };
 
 const copyTemplate = (root) => {
