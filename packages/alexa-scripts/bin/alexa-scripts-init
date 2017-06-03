@@ -27,9 +27,8 @@ const setupPackage = (root) => () => {
       test: 'alexa-scripts test'
     }),
     dependencies: Object.assign({}, packageJson.dependencies, {
-      'alexa-response': '*',
       'alexa-annotations': '*',
-      'ssml-jsx': '*'
+      'alexa-response': '*'
     }),
     devDependencies: Object.assign({}, packageJson.devDependencies, {
       'alexa-request': '*'
