@@ -4,7 +4,7 @@
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-scripts",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "bin": {
     "alexa-scripts": "./bin/alexa-scripts"
   },
@@ -13,7 +13,7 @@
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-alexa-app": "^1.4.2",
+    "babel-preset-alexa-app": "^1.4.3",
     "bestzip": "^1.1.4",
     "case-sensitive-paths-webpack-plugin": "^2.0.0",
     "chalk": "^1.1.3",
