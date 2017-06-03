@@ -1,16 +1,25 @@
 import { Skill, Launch, Intent } from 'alexa-annotations';
-import { say, ask } from 'alexa-response';
+import Response, { say, ask } from 'alexa-response';
 
-export class App {
+export class HelloWorld {
 
   @Launch
   launch() {
-    return say('Alexa app launched!');
+    return Response.build({
+      ask: 'Hello World Alexa skill launched! Who would you like to say hello to?',
+      reprompt: 'Who would you like to say hello to?'
+    });
   }
 
   @Intent('hello')
   hello({ name = 'world' }) {
-    return say(`Hello ${name}`).card({ title: 'Alexa App', content: `Hello ${name}` });
+    return Response.build({
+      say: (<speak>Hello {name}!</speak>),
+      card: {
+        title: 'Hello to…',
+        content: `Hello ${name}!`
+      }
+    });
   }
 
   @Intent('AMAZON.HelpIntent')
@@ -25,4 +34,4 @@ export class App {
 
 }
 
-export default Skill(App);
+export default Skill(HelloWorld);

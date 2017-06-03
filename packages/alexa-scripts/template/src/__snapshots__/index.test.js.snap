@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Hello intent 1`] = `
+exports[`Cancel intent 1`] = `
 Object {
   "response": Object {
-    "card": Object {
-      "content": "Hello world",
-      "title": "Alexa App",
-      "type": "Simple",
-    },
     "outputSpeech": Object {
-      "text": "Hello world",
-      "type": "PlainText",
+      "ssml": "<speak>Goodbye!</speak>",
+      "type": "SSML",
     },
     "shouldEndSession": true,
   },
@@ -18,12 +13,68 @@ Object {
 }
 `;
 
-exports[`LaunchRequest 1`] = `
+exports[`Hello intent 1`] = `
+Object {
+  "response": Object {
+    "card": Object {
+      "content": "Hello world!",
+      "title": "Hello to…",
+      "type": "Simple",
+    },
+    "outputSpeech": Object {
+      "ssml": "<speak>Hello world!</speak>",
+      "type": "SSML",
+    },
+    "shouldEndSession": true,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`Help intent 1`] = `
 Object {
   "response": Object {
     "outputSpeech": Object {
-      "text": "Alexa app launched!",
+      "text": "I say hello to people. Who should I say hello to?",
       "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "Who should I say hello to?",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`Launch intent 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "text": "Hello World Alexa skill launched! Who would you like to say hello to?",
+      "type": "PlainText",
+    },
+    "reprompt": Object {
+      "outputSpeech": Object {
+        "text": "Who would you like to say hello to?",
+        "type": "PlainText",
+      },
+    },
+    "shouldEndSession": false,
+  },
+  "version": "1.0",
+}
+`;
+
+exports[`Stop intent 1`] = `
+Object {
+  "response": Object {
+    "outputSpeech": Object {
+      "ssml": "<speak>Goodbye!</speak>",
+      "type": "SSML",
     },
     "shouldEndSession": true,
   },

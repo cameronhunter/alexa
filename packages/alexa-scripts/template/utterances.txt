@@ -1,0 +1,3 @@
+hello Say hello to {name}
+hello Say hi to {name}
+hello {name}
