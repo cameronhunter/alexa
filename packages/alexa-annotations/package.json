@@ -12,6 +12,7 @@
   ],
   "dependencies": {
     "alexa-constants": "^0.4.2",
+    "alexa-response": "^4.2.9",
     "bluebird": "^3.3.4",
     "object-values": "^1.0.0",
     "uuid": "^2.0.3"

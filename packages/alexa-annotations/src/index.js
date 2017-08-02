@@ -8,6 +8,7 @@ export * as ErrorCode from './ErrorCodes';
 export Launch from './CustomSkill/Launch';
 export Intent from './CustomSkill/Intent';
 export SessionEnded from './CustomSkill/SessionEnded';
+export Dialog from './CustomSkill/Dialog';
 
 /*******************************************************************************
  * Alexa Smart Home Skill Intents
