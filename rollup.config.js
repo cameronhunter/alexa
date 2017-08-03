@@ -12,12 +12,12 @@ export default {
     'alexa-response',
     'alexa-constants',
     'ssml-jsx',
-    'prop-types',
+    'prop-types'
   ],
   plugins: [
     babel({
       babelrc: false,
-      presets: [['alexa-app', { modules: false }]],
+      presets: [['alexa-app', { modules: false }]]
     }),
   ],
 };

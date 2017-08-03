@@ -24,5 +24,5 @@ export default {
   Intent,
   PlaybackController,
   Request,
-  SpeechType,
+  SpeechType
 };
