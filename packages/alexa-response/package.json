@@ -4,14 +4,14 @@
   "author": "Cameron Hunter <hello@cameronhunter.co.uk>",
   "license": "MIT",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-response",
-  "version": "4.2.9",
+  "version": "4.2.10",
   "main": "build/index.min.js",
   "files": [
     "build",
     "src"
   ],
   "dependencies": {
-    "alexa-constants": "^0.4.2",
+    "alexa-constants": "^0.5.0",
     "ssml-jsx": "^2.0.3"
   },
   "keywords": [

@@ -4,7 +4,7 @@
   "author": "Cameron Hunter <hello@cameronhunter.co.uk> (http://cameronhunter.co.uk)",
   "license": "MIT",
   "repository": "https://github.com/cameronhunter/alexa/tree/master/packages/alexa-constants",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "main": "build/index.min.js",
   "files": [
     "build",
