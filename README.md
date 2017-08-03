@@ -1,4 +1,4 @@
-# Alexa
+# Alexa [![Build Status](https://travis-ci.org/cameronhunter/alexa.svg?branch=master)](https://travis-ci.org/cameronhunter/alexa)
 
 A monorepo of libraries used to build both custom skills and smart home skills
 for the Amazon Echo.
