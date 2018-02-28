@@ -15,7 +15,11 @@
     "lint": "eslint ./packages",
     "prepublish": "npm run test",
     "publish": "lerna publish",
-    "lerna": "lerna"
+    "lerna": "lerna",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": ["prettier --write", "git add"]
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
@@ -24,10 +28,13 @@
     "babel-register": "^6.18.0",
     "eslint": "^3.9.1",
     "eslint-plugin-jest": "^20.0.3",
+    "husky": "^0.14.3",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^20.0.4",
     "lerna": "2.0.0-beta.30",
+    "lint-staged": "^7.0.0",
     "npm-run-all": "^4.0.2",
+    "prettier": "^1.11.0",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.6.1"
   },
