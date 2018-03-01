@@ -1,25 +1,22 @@
 {
+  "private": true,
   "name": "alexa",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
-    "clean": "lerna clean",
     "bootstrap": "lerna bootstrap",
-    "build:dev": "NODE_ENV=development lerna exec -- rollup --config ../../rollup.config.js",
-    "build:production": "NODE_ENV=production lerna exec -- rollup --config ../../rollup.config.js",
     "prebuild": "npm run bootstrap",
     "build": "npm-run-all --parallel build:dev build:production",
-    "pretest": "npm run build",
-    "test": "jest",
-    "posttest": "npm run lint",
+    "build:dev": "NODE_ENV=development lerna exec -- rollup --config ../../rollup.config.js",
+    "build:production": "NODE_ENV=production lerna exec -- rollup --config ../../rollup.config.js",
+    "clean": "lerna clean",
+    "precommit": "lint-staged",
+    "lerna": "lerna",
     "lint": "eslint ./packages",
     "prepublish": "npm run test",
     "publish": "lerna publish",
-    "lerna": "lerna",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": ["prettier --write", "git add"]
+    "pretest": "npm run build",
+    "test": "jest",
+    "posttest": "npm run lint"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
@@ -40,5 +37,11 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
