@@ -3,7 +3,8 @@ const path = require('path');
 const run = require('./run');
 const validateName = require('./validateName');
 
-const chain = (...promises) => promises.reduce((state, action) => state.then(action), Promise.resolve());
+const chain = (...promises) =>
+  promises.reduce((state, action) => state.then(action), Promise.resolve());
 
 const error = (name) => (err) => Promise.reject({ name, error: err });
 
@@ -19,7 +20,11 @@ const install = (packageJson) => ({ appName, root }) => {
   const packagePath = path.join(root, 'package.json');
   return fs
     .ensureDir(root)
-    .then(() => fs.writeJson(packagePath, Object.assign({ name: appName }, packageJson), { spaces: 2 }))
+    .then(() =>
+      fs.writeJson(packagePath, Object.assign({ name: appName }, packageJson), {
+        spaces: 2
+      })
+    )
     .catch(error('Package creation'))
     .then(() => process.chdir(root))
     .then(() => run('npm', 'install'))
@@ -33,11 +38,17 @@ const postinstall = (root) => {
   const packageJson = require(path.join(root, 'package.json'));
   const scripts = Object.assign({}, packageJson.scripts, { init: undefined });
   const newPackageJson = Object.assign({}, packageJson, { scripts });
-  return fs.writeJson(path.join(root, 'package.json'), newPackageJson, { spaces: 2 }).catch(error('Post-install'));
+  return fs
+    .writeJson(path.join(root, 'package.json'), newPackageJson, { spaces: 2 })
+    .catch(error('Post-install'));
 };
 
 module.exports = (projectDirectory, configuration) =>
-  chain(preinstall(projectDirectory), install(configuration.package.json), postinstall).catch((error) => {
+  chain(
+    preinstall(projectDirectory),
+    install(configuration.package.json),
+    postinstall
+  ).catch((error) => {
     // Delete known generated files
     return Promise.reject(error);
   });

@@ -13,7 +13,10 @@ test('creates an object containing type and props keys', () => {
 test('handles custom tags', () => {
   // eslint-disable-next-line
   const Format = (props) =>
-    Object.entries(props).reduce((state, [k, v]) => state.replace('{' + k + '}', v), props.template);
+    Object.entries(props).reduce(
+      (state, [k, v]) => state.replace('{' + k + '}', v),
+      props.template
+    );
   const speech = <Format template="Hello {name}" name="world" />;
   expect(speech).toMatchSnapshot();
 });

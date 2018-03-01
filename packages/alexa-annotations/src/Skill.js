@@ -10,7 +10,9 @@ const Skill = (options) => (Skill) => (event, context, callback) => {
       return new Skill(session).route(event) || Promise.reject(NotFound);
     })
     .then((response) => {
-      return typeof response.build === 'function' ? response.build(attributes) : response;
+      return typeof response.build === 'function'
+        ? response.build(attributes)
+        : response;
     })
     .then((response) => {
       callback && callback(null, response);

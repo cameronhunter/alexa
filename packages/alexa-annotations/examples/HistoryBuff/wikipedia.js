@@ -9,16 +9,27 @@ export default (month, date) =>
       const [{ extract }] = values(response.query.pages);
       return parseWikiText(extract).map(cleanupEventText);
     })
-    .then((events) => (events.length ? Promise.resolve(events) : Promise.reject()))
-    .catch(() => Promise.reject('There is a problem connecting to Wikipedia at this time. Please try again later.'));
+    .then(
+      (events) => (events.length ? Promise.resolve(events) : Promise.reject())
+    )
+    .catch(() =>
+      Promise.reject(
+        'There is a problem connecting to Wikipedia at this time. Please try again later.'
+      )
+    );
 
 const parseWikiText = (text) => {
   const start = '\nEvents\n';
   const end = '\n\n\nBirths';
-  const events = text.substring(text.indexOf(start) + start.length, text.indexOf(end));
+  const events = text.substring(
+    text.indexOf(start) + start.length,
+    text.indexOf(end)
+  );
   return events.split('\n');
 };
 
 const cleanupEventText = (event) => {
-  return 'In ' + event.replace(/\u2013\s*/g, '').replace(/(^\d+(\s(BC|AD))?)/, '$1,');
+  return (
+    'In ' + event.replace(/\u2013\s*/g, '').replace(/(^\d+(\s(BC|AD))?)/, '$1,')
+  );
 };

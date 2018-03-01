@@ -16,16 +16,18 @@ export default class MinecraftHelper {
   @Intent('RecipeIntent')
   recipe({ Item }) {
     return recipes(Item)
-      .then((recipe) => say(recipe).card({ title: `Recipe for ${Item}`, content: recipe }))
+      .then((recipe) =>
+        say(recipe).card({ title: `Recipe for ${Item}`, content: recipe })
+      )
       .catch(
         () =>
           Item
-            ? ask(`I'm sorry, I currently do not know the recipe for ${Item}. What else can I help with?`).reprompt(
-                'What else can I help with?'
-              )
-            : ask("I'm sorry, I currently do not know that recipe. What else can I help with?").reprompt(
-                'What else can I help with?'
-              )
+            ? ask(
+                `I'm sorry, I currently do not know the recipe for ${Item}. What else can I help with?`
+              ).reprompt('What else can I help with?')
+            : ask(
+                "I'm sorry, I currently do not know that recipe. What else can I help with?"
+              ).reprompt('What else can I help with?')
       );
   }
 

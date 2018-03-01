@@ -10,7 +10,12 @@ import PropTypes from 'prop-types';
 export default {
   type: 'w',
   propTypes: {
-    role: PropTypes.oneOf(['amazon:VB', 'amazon:VBD', 'amazon:NN', 'amazon:SENSE_1']),
+    role: PropTypes.oneOf([
+      'amazon:VB',
+      'amazon:VBD',
+      'amazon:NN',
+      'amazon:SENSE_1'
+    ]),
     children: PropTypes.any.isRequired
   }
 };

@@ -1,4 +1,11 @@
-import { Skill, Discovery, TurnOn, TurnOff, Control, SetPercentage } from '../..';
+import {
+  Skill,
+  Discovery,
+  TurnOn,
+  TurnOff,
+  Control,
+  SetPercentage
+} from '../..';
 import { devices, brightness } from './appliances';
 
 @Skill
@@ -28,10 +35,14 @@ export default class SmartHome {
     const { deltaPercentage = {} } = payload;
     switch (name) {
       case 'IncrementPercentageRequest':
-        return brightness(applianceId).then((value) => brightness(applianceId, value + deltaPercentage.value));
+        return brightness(applianceId).then((value) =>
+          brightness(applianceId, value + deltaPercentage.value)
+        );
 
       case 'DecrementPercentageRequest':
-        return brightness(applianceId).then((value) => brightness(applianceId, value - deltaPercentage.value));
+        return brightness(applianceId).then((value) =>
+          brightness(applianceId, value - deltaPercentage.value)
+        );
 
       default:
         return Promise.reject();

@@ -9,6 +9,8 @@ export const match = (regex) => (props, propName, tagName) => {
 
 export const none = (props, propName, tagName) => {
   if (props && props[propName]) {
-    return new Error(`Unexpected prop "${propName}" on "${tagName}" tag. Expected none.`);
+    return new Error(
+      `Unexpected prop "${propName}" on "${tagName}" tag. Expected none.`
+    );
   }
 };

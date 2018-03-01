@@ -9,7 +9,8 @@ export default class Request {
   static session = (...args) => new Request().session(...args);
   static intent = (...args) => new Request().intent(...args);
   static launchRequest = (...args) => new Request().launchRequest(...args);
-  static sessionEndedRequest = (...args) => new Request().sessionEndedRequest(...args);
+  static sessionEndedRequest = (...args) =>
+    new Request().sessionEndedRequest(...args);
 
   constructor(state = {}) {
     this.state = state;
@@ -26,7 +27,10 @@ export default class Request {
   }
 
   intent(name, slots = {}) {
-    const slotData = entries(slots).reduce((state, [name, value]) => ({ ...state, [name]: { name, value } }), {});
+    const slotData = entries(slots).reduce(
+      (state, [name, value]) => ({ ...state, [name]: { name, value } }),
+      {}
+    );
     return new Request({
       ...this.state,
       request: {

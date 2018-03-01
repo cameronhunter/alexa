@@ -11,7 +11,13 @@ const Appliances = {
       friendlyName: 'Living Room',
       friendlyDescription: 'Philips Hue light bulb',
       isReachable: true,
-      actions: ['turnOn', 'turnOff', 'setPercentage', 'incrementPercentage', 'decrementPercentage']
+      actions: [
+        'turnOn',
+        'turnOff',
+        'setPercentage',
+        'incrementPercentage',
+        'decrementPercentage'
+      ]
     }
   },
   bedroom: {
@@ -24,7 +30,13 @@ const Appliances = {
       friendlyName: 'Bedroom',
       friendlyDescription: 'Philips Hue light bulb',
       isReachable: true,
-      actions: ['turnOn', 'turnOff', 'setPercentage', 'incrementPercentage', 'decrementPercentage']
+      actions: [
+        'turnOn',
+        'turnOff',
+        'setPercentage',
+        'incrementPercentage',
+        'decrementPercentage'
+      ]
     }
   }
 };
@@ -43,7 +55,12 @@ export const brightness = (applianceId, value) => {
   // Set
   return new Promise((resolve, reject) => {
     const appliance = Appliances[applianceId];
-    appliance ? resolve({ ...Appliances, [applianceId]: { ...Appliances[applianceId], brightness: value } }) : reject();
+    appliance
+      ? resolve({
+          ...Appliances,
+          [applianceId]: { ...Appliances[applianceId], brightness: value }
+        })
+      : reject();
   }).then((updatedState) => {
     Appliances = updatedState;
     return value;

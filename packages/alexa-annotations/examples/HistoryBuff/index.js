@@ -56,7 +56,10 @@ export default class HistoryBuff {
     return wikipedia(monthName, date.getDate())
       .then((result) => {
         const events = result.slice(0, PaginationSize);
-        const speechText = events.reduce((state, event) => `<p>${state}${event}</p>`, '');
+        const speechText = events.reduce(
+          (state, event) => `<p>${state}${event}</p>`,
+          ''
+        );
 
         return Response.build({
           ask: (
@@ -68,7 +71,10 @@ export default class HistoryBuff {
               <p>Wanna go deeper in history?</p>
             </speak>
           ),
-          card: { title: cardTitle, content: `For ${monthName} ${date.getDate()}, ${events.join(' ')}` },
+          card: {
+            title: cardTitle,
+            content: `For ${monthName} ${date.getDate()}, ${events.join(' ')}`
+          },
           reprompt: IntroText,
           attributes: { result, index: PaginationSize }
         });
@@ -81,7 +87,8 @@ export default class HistoryBuff {
   @Intent('GetNextEventIntent')
   nextEvent() {
     const cardTitle = 'More events on this day in history';
-    const repromptText = 'Do you want to know more about what happened on this date?';
+    const repromptText =
+      'Do you want to know more about what happened on this date?';
 
     if (!this.result) {
       return ask(IntroText)
@@ -105,7 +112,10 @@ export default class HistoryBuff {
     const index = this.index + PaginationSize;
     const events = this.result.slice(this.index, index);
     const moreContent = index < this.result.length;
-    const speechText = events.reduce((state, event) => `<p>${state}${event}</p>`, '');
+    const speechText = events.reduce(
+      (state, event) => `<p>${state}${event}</p>`,
+      ''
+    );
     const cardContent = events.join(' ');
 
     return ask(
@@ -114,7 +124,11 @@ export default class HistoryBuff {
         {moreContent ? ' Wanna go deeper in history?' : ''}
       </speak>
     )
-      .card({ title: cardTitle, content: cardContent + (moreContent ? ' Wanna go deeper in history?' : '') })
+      .card({
+        title: cardTitle,
+        content:
+          cardContent + (moreContent ? ' Wanna go deeper in history?' : '')
+      })
       .reprompt(repromptText)
       .attributes({ result: this.result, index });
   }

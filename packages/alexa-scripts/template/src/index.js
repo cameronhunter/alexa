@@ -5,7 +5,8 @@ export class HelloWorld {
   @Launch
   launch() {
     return Response.build({
-      ask: 'Hello World Alexa skill launched! Who would you like to say hello to?',
+      ask:
+        'Hello World Alexa skill launched! Who would you like to say hello to?',
       reprompt: 'Who would you like to say hello to?'
     });
   }
@@ -23,7 +24,9 @@ export class HelloWorld {
 
   @Intent('AMAZON.HelpIntent')
   help() {
-    return ask('I say hello to people. Who should I say hello to?').reprompt('Who should I say hello to?');
+    return ask('I say hello to people. Who should I say hello to?').reprompt(
+      'Who should I say hello to?'
+    );
   }
 
   @Intent('AMAZON.CancelIntent', 'AMAZON.StopIntent')

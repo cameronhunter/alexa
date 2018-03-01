@@ -2,7 +2,11 @@ const validateProjectName = require('validate-npm-package-name');
 
 module.exports = function validateAppName(appName) {
   return new Promise((resolve, reject) => {
-    const { validForNewPackages, errors = [], warnings = [] } = validateProjectName(appName);
+    const {
+      validForNewPackages,
+      errors = [],
+      warnings = []
+    } = validateProjectName(appName);
 
     if (validForNewPackages) {
       resolve(appName);

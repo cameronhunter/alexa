@@ -6,22 +6,30 @@ import fetch from 'isomorphic-fetch';
 export default class HelloWorld {
   @Launch
   launch() {
-    return Response.ask('Welcome to the Alexa Skills Kit, you can say hello').reprompt('You can say hello');
+    return Response.ask(
+      'Welcome to the Alexa Skills Kit, you can say hello'
+    ).reprompt('You can say hello');
   }
 
   @Intent('HelloWorldIntent')
   hello() {
-    return Response.say('Hello World!').card({ title: 'Greeter', content: 'Hello World!' });
+    return Response.say('Hello World!').card({
+      title: 'Greeter',
+      content: 'Hello World!'
+    });
   }
 
   @Intent('AMAZON.HelpIntent')
   help() {
-    return Response.ask('You can say hello to me!').reprompt('You can say hello to me!');
+    return Response.ask('You can say hello to me!').reprompt(
+      'You can say hello to me!'
+    );
   }
 
   @Intent('Credits')
   credits() {
-    const url = 'https://raw.githubusercontent.com/cameronhunter/alexa-lambda-skill/master/package.json';
+    const url =
+      'https://raw.githubusercontent.com/cameronhunter/alexa-lambda-skill/master/package.json';
     return fetch(url)
       .then((response) => response.json())
       .then(({ author }) => {

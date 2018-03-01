@@ -6,5 +6,7 @@ test('PlainText', () => {
 });
 
 test('SSML', () => {
-  expect(reprompt(<speak>Can you repeat that?</speak>).build()).toMatchSnapshot();
+  expect(
+    reprompt(<speak>Can you repeat that?</speak>).build()
+  ).toMatchSnapshot();
 });

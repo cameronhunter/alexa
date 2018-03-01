@@ -1,10 +1,16 @@
-export default (predicate, requestTransform, responseTransform = (i) => i) => (skill, name) => {
+export default (predicate, requestTransform, responseTransform = (i) => i) => (
+  skill,
+  name
+) => {
   const route = skill.route || (() => false);
 
   skill.route = function(event = {}) {
     return (
       route.call(this, event) ||
-      (predicate(event) && responseTransform(skill[name].apply(this, getArgs(requestTransform, event))))
+      (predicate(event) &&
+        responseTransform(
+          skill[name].apply(this, getArgs(requestTransform, event))
+        ))
     );
   };
 

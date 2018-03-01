@@ -13,7 +13,9 @@ export default {
   enqueue(stream, replaceQueue = false) {
     return {
       type: Directive.Play,
-      playBehavior: replaceQueue ? PlayBehavior.ReplaceEnqueued : PlayBehavior.Enqueue,
+      playBehavior: replaceQueue
+        ? PlayBehavior.ReplaceEnqueued
+        : PlayBehavior.Enqueue,
       audioItem: { stream }
     };
   },
@@ -27,7 +29,9 @@ export default {
   clearQueue(stopCurrent = false) {
     return {
       type: Directive.ClearQueue,
-      clearBehavior: stopCurrent ? ClearBehavior.ClearAll : ClearBehavior.ClearEnqueued
+      clearBehavior: stopCurrent
+        ? ClearBehavior.ClearAll
+        : ClearBehavior.ClearEnqueued
     };
   }
 };

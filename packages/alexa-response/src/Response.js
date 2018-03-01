@@ -6,7 +6,8 @@ export default class Response {
   static say = (...args) => new Response().say(...args);
   static card = (...args) => new Response().card(...args);
   static reprompt = (...args) => new Response().reprompt(...args);
-  static shouldEndSession = (...args) => new Response().shouldEndSession(...args);
+  static shouldEndSession = (...args) =>
+    new Response().shouldEndSession(...args);
   static directives = (...args) => new Response().directives(...args);
 
   static build = (params) =>
@@ -95,7 +96,9 @@ export default class Response {
   }
 
   directives(directive, ...rest) {
-    const directives = Array.isArray(directive) ? directive : [directive, ...rest];
+    const directives = Array.isArray(directive)
+      ? directive
+      : [directive, ...rest];
     const { directives: previousDirectives = [] } = this.state.response || {};
     return new Response({
       ...this.state,
@@ -115,7 +118,12 @@ export default class Response {
         ...this.state.response
       },
       ...(attributes || this.state.sessionAttributes
-        ? { sessionAttributes: { ...attributes, ...this.state.sessionAttributes } }
+        ? {
+            sessionAttributes: {
+              ...attributes,
+              ...this.state.sessionAttributes
+            }
+          }
         : null)
     };
   }

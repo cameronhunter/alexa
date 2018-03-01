@@ -77,7 +77,9 @@ module.exports = (context, opts = {}) => {
         require.resolve('babel-preset-env'),
         Object.assign(
           { targets: { node: '6.10' } },
-          opts && opts.modules !== undefined ? { modules: opts.modules } : undefined
+          opts && opts.modules !== undefined
+            ? { modules: opts.modules }
+            : undefined
         )
       ],
 
