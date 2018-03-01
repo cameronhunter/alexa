@@ -5,23 +5,28 @@ const Skill = (options) => (Skill) => (event, context, callback) => {
   const { session } = event || {};
   const { application, attributes } = session || {};
 
-  return isAuthorized(options, application).then(() => {
-    return new Skill(session).route(event) || Promise.reject(NotFound);
-  }).then(response => {
-    return (typeof response.build === 'function') ? response.build(attributes) : response;
-  }).then(response => {
-    callback && callback(null, response);
-    return response;
-  }).catch((error = InternalServer) => {
-    callback && callback(error);
-    return error;
-  }).then(response => {
-    if (process.env.NODE_ENV !== 'test' && options.logging !== false) {
-      console.log(`[${Skill.name}]`, JSON.stringify({ event, response }));
-    }
+  return isAuthorized(options, application)
+    .then(() => {
+      return new Skill(session).route(event) || Promise.reject(NotFound);
+    })
+    .then((response) => {
+      return typeof response.build === 'function' ? response.build(attributes) : response;
+    })
+    .then((response) => {
+      callback && callback(null, response);
+      return response;
+    })
+    .catch((error = InternalServer) => {
+      callback && callback(error);
+      return error;
+    })
+    .then((response) => {
+      if (process.env.NODE_ENV !== 'test' && options.logging !== false) {
+        console.log(`[${Skill.name}]`, JSON.stringify({ event, response }));
+      }
 
-    return response;
-  });
+      return response;
+    });
 };
 
 /*******************************************************************************

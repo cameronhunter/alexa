@@ -13,7 +13,7 @@ test('PlainText', () => {
 
 test('SSML', () => {
   const response = Response.build({
-    ask: (<speak>Does this work?</speak>),
+    ask: <speak>Does this work?</speak>,
     reprompt: 'Well? Does it?',
     card: { title: 'Test', content: 'Testing if this thing works' }
   });

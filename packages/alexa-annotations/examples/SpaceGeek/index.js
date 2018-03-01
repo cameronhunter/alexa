@@ -19,7 +19,6 @@ const SPACE_FACTS = [
 
 @Skill
 export default class SpaceGeek {
-
   @Launch
   @Intent('GetNewFactIntent')
   fact() {
@@ -30,12 +29,13 @@ export default class SpaceGeek {
 
   @Intent('AMAZON.HelpIntent')
   help() {
-    return Response.ask('You can ask Space Geek tell me a space fact, or, you can say exit... What can I help you with?').reprompt('What can I help you with?');
+    return Response.ask(
+      'You can ask Space Geek tell me a space fact, or, you can say exit... What can I help you with?'
+    ).reprompt('What can I help you with?');
   }
 
   @Intent('AMAZON.CancelIntent', 'AMAZON.StopIntent')
   stop() {
     return Response.say('Goodbye');
   }
-
 }

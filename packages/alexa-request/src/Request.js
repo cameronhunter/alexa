@@ -2,7 +2,7 @@ import { Request as Constants } from 'alexa-constants';
 
 function entries(input) {
   const array = input || [];
-  return Object.keys(array).map(key => [key, array[key]]);
+  return Object.keys(array).map((key) => [key, array[key]]);
 }
 
 export default class Request {

@@ -2,7 +2,6 @@ import { Skill, Launch, Intent } from 'alexa-annotations';
 import Response, { say, ask } from 'alexa-response';
 
 export class HelloWorld {
-
   @Launch
   launch() {
     return Response.build({
@@ -14,7 +13,7 @@ export class HelloWorld {
   @Intent('hello')
   hello({ name = 'world' }) {
     return Response.build({
-      say: (<speak>Hello {name}!</speak>),
+      say: <speak>Hello {name}!</speak>,
       card: {
         title: 'Hello to…',
         content: `Hello ${name}!`
@@ -31,7 +30,6 @@ export class HelloWorld {
   stop() {
     return say(<speak>Goodbye!</speak>);
   }
-
 }
 
 export default Skill(HelloWorld);

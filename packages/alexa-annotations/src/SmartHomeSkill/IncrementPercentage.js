@@ -9,14 +9,15 @@ const requestTransform = ({ payload = {} }) => {
   return [appliance.applianceId, deltaPercentage.value, payload];
 };
 
-const responseTransform = (response) => Promise.resolve(response).then(() => ({
-  header: {
-    messageId: UUID.v4(),
-    name: ConnectedHome.Confirmation.IncrementPercentage,
-    namespace: ConnectedHome.Control,
-    payloadVersion: '2'
-  },
-  payload: {}
-}));
+const responseTransform = (response) =>
+  Promise.resolve(response).then(() => ({
+    header: {
+      messageId: UUID.v4(),
+      name: ConnectedHome.Confirmation.IncrementPercentage,
+      namespace: ConnectedHome.Control,
+      payloadVersion: '2'
+    },
+    payload: {}
+  }));
 
 export default ControlRequest(name, requestTransform, responseTransform);

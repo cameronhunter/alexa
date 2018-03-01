@@ -4,7 +4,6 @@ import fetch from 'isomorphic-fetch';
 
 @Skill({ applicationId: 'my-app-id' })
 export default class HelloWorld {
-
   @Launch
   launch() {
     return Response.ask('Welcome to the Alexa Skills Kit, you can say hello').reprompt('You can say hello');
@@ -23,10 +22,13 @@ export default class HelloWorld {
   @Intent('Credits')
   credits() {
     const url = 'https://raw.githubusercontent.com/cameronhunter/alexa-lambda-skill/master/package.json';
-    return fetch(url).then(response => response.json()).then(({ author }) => {
-      return Response.say(`Hello World was created by ${author.name}`)
-                     .card({ title: 'Hello World', content: `Credits: ${author.name} <${author.email}> (${author.url})` });
-    });
+    return fetch(url)
+      .then((response) => response.json())
+      .then(({ author }) => {
+        return Response.say(`Hello World was created by ${author.name}`).card({
+          title: 'Hello World',
+          content: `Credits: ${author.name} <${author.email}> (${author.url})`
+        });
+      });
   }
-
 }

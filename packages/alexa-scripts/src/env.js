@@ -20,14 +20,14 @@ var dotenvFiles = [
   // since normally you expect tests to produce the same
   // results for everyone
   NODE_ENV !== 'test' && `${paths.dotenv}.local`,
-  paths.dotenv,
+  paths.dotenv
 ].filter(Boolean);
 
 // Load environment variables from .env* files. Suppress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
 // https://github.com/motdotla/dotenv
-dotenvFiles.forEach(dotenvFile => {
+dotenvFiles.forEach((dotenvFile) => {
   if (fs.existsSync(dotenvFile)) {
     require('dotenv').config({ path: dotenvFile });
   }
@@ -39,19 +39,16 @@ const ALEXA_APP = /^ALEXA_APP_/i;
 
 module.exports = () => {
   const raw = Object.keys(process.env)
-    .filter(key => ALEXA_APP.test(key))
-    .reduce(
-      (env, key) => Object.assign({}, env, { [key]: process.env[key] }),
-      { NODE_ENV: process.env.NODE_ENV || 'development' }
-    );
+    .filter((key) => ALEXA_APP.test(key))
+    .reduce((env, key) => Object.assign({}, env, { [key]: process.env[key] }), {
+      NODE_ENV: process.env.NODE_ENV || 'development'
+    });
 
   // Stringify all values so we can feed into Webpack DefinePlugin
   const stringified = {
-    'process.env': (
-      Object.keys(raw).reduce(
-        (env, key) => Object.assign({}, env, { [key]: JSON.stringify(raw[key]) }),
-        {}
-      )
+    'process.env': Object.keys(raw).reduce(
+      (env, key) => Object.assign({}, env, { [key]: JSON.stringify(raw[key]) }),
+      {}
     )
   };
 

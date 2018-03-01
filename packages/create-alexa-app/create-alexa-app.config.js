@@ -1,11 +1,10 @@
 const latestVersion = require('latest-version');
 const path = require('path');
 
-const getVersion = (
+const getVersion =
   process.env.NODE_ENV === 'dev'
     ? Promise.resolve(`file://${path.join(__dirname, '..', 'alexa-scripts')}`)
-    : latestVersion('alexa-scripts').then((version) => `^${version}`)
-);
+    : latestVersion('alexa-scripts').then((version) => `^${version}`);
 
 module.exports = getVersion.then((version) => ({
   package: {

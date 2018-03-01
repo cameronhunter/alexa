@@ -3,7 +3,6 @@ import { devices, brightness } from './appliances';
 
 @Skill
 export default class SmartHome {
-
   @Discovery
   discovery() {
     return devices();
@@ -28,15 +27,14 @@ export default class SmartHome {
   control(applianceId, name, payload = {}) {
     const { deltaPercentage = {} } = payload;
     switch (name) {
-    case 'IncrementPercentageRequest':
-      return brightness(applianceId).then(value => brightness(applianceId, value + deltaPercentage.value));
+      case 'IncrementPercentageRequest':
+        return brightness(applianceId).then((value) => brightness(applianceId, value + deltaPercentage.value));
 
-    case 'DecrementPercentageRequest':
-      return brightness(applianceId).then(value => brightness(applianceId, value - deltaPercentage.value));
+      case 'DecrementPercentageRequest':
+        return brightness(applianceId).then((value) => brightness(applianceId, value - deltaPercentage.value));
 
-    default:
-      return Promise.reject();
+      default:
+        return Promise.reject();
     }
   }
-
 }

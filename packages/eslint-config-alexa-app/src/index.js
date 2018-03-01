@@ -19,7 +19,7 @@ module.exports = {
   env: {
     es6: true,
     jest: true,
-    node: true,
+    node: true
   },
 
   parserOptions: {
@@ -28,8 +28,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
       generators: true,
-      experimentalObjectRestSpread: true,
-    },
+      experimentalObjectRestSpread: true
+    }
   },
 
   rules: {
@@ -72,10 +72,10 @@ module.exports = {
           ['&', '|', '^', '~', '<<', '>>', '>>>'],
           ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
           ['&&', '||'],
-          ['in', 'instanceof'],
+          ['in', 'instanceof']
         ],
-        allowSamePrecedence: false,
-      },
+        allowSamePrecedence: false
+      }
     ],
     'no-multi-str': 'warn',
     'no-native-reassign': 'warn',
@@ -106,24 +106,24 @@ module.exports = {
       'warn',
       {
         allowShortCircuit: true,
-        allowTernary: true,
-      },
+        allowTernary: true
+      }
     ],
     'no-unused-labels': 'warn',
     'no-unused-vars': [
       'warn',
       {
         args: 'none',
-        ignoreRestSiblings: true,
-      },
+        ignoreRestSiblings: true
+      }
     ],
     'no-use-before-define': [
       'warn',
       {
         functions: false,
         classes: false,
-        variables: false,
-      },
+        variables: false
+      }
     ],
     'no-useless-computed-key': 'warn',
     'no-useless-concat': 'warn',
@@ -134,8 +134,8 @@ module.exports = {
       {
         ignoreDestructuring: false,
         ignoreImport: false,
-        ignoreExport: false,
-      },
+        ignoreExport: false
+      }
     ],
     'no-with': 'warn',
     'no-whitespace-before-property': 'warn',
@@ -156,6 +156,6 @@ module.exports = {
     'flowtype/define-flow-type': 'warn',
     // TODO: Reenable once https://github.com/gajus/eslint-plugin-flowtype/issues/165 is fixed
     //'flowtype/require-valid-file-annotation': 'warn',
-    'flowtype/use-flow-type': 'warn',
-  },
+    'flowtype/use-flow-type': 'warn'
+  }
 };

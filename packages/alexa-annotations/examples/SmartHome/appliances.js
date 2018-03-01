@@ -11,10 +11,10 @@ const Appliances = {
       friendlyName: 'Living Room',
       friendlyDescription: 'Philips Hue light bulb',
       isReachable: true,
-      actions: ['turnOn', 'turnOff', 'setPercentage', 'incrementPercentage', 'decrementPercentage'],
-    },
+      actions: ['turnOn', 'turnOff', 'setPercentage', 'incrementPercentage', 'decrementPercentage']
+    }
   },
-  'bedroom': {
+  bedroom: {
     brightness: 100,
     device: {
       applianceId: 'bedroom',
@@ -24,27 +24,27 @@ const Appliances = {
       friendlyName: 'Bedroom',
       friendlyDescription: 'Philips Hue light bulb',
       isReachable: true,
-      actions: ['turnOn', 'turnOff', 'setPercentage', 'incrementPercentage', 'decrementPercentage'],
+      actions: ['turnOn', 'turnOff', 'setPercentage', 'incrementPercentage', 'decrementPercentage']
     }
   }
 };
 
 export const devices = () => {
-  return Promise.resolve(values(Appliances).map(_ => _.device));
+  return Promise.resolve(values(Appliances).map((_) => _.device));
 };
 
 export const brightness = (applianceId, value) => {
-    // Get
+  // Get
   if (value == null) {
     const appliance = Appliances[applianceId];
     return appliance ? Promise.resolve(appliance.brightness) : Promise.reject();
   }
 
-    // Set
+  // Set
   return new Promise((resolve, reject) => {
     const appliance = Appliances[applianceId];
     appliance ? resolve({ ...Appliances, [applianceId]: { ...Appliances[applianceId], brightness: value } }) : reject();
-  }).then(updatedState => {
+  }).then((updatedState) => {
     Appliances = updatedState;
     return value;
   });

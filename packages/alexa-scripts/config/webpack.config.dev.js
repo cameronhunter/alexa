@@ -60,9 +60,7 @@ module.exports = {
       // It usually still works on npm 3 without this but it would be
       // unfortunate to rely on, as react-scripts could be symlinked,
       // and thus babel-runtime might not be resolvable from the source.
-      'babel-runtime': path.dirname(
-        require.resolve('babel-runtime/package.json')
-      )
+      'babel-runtime': path.dirname(require.resolve('babel-runtime/package.json'))
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -70,8 +68,8 @@ module.exports = {
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc),
-    ],
+      new ModuleScopePlugin(paths.appSrc)
+    ]
   },
   module: {
     strictExportPresence: true,
@@ -93,10 +91,10 @@ module.exports = {
               ignore: false,
               useEslintrc: false
             },
-            loader: require.resolve('eslint-loader'),
-          },
+            loader: require.resolve('eslint-loader')
+          }
         ],
-        include: paths.appSrc,
+        include: paths.appSrc
       },
 
       // Process JS with Babel.
@@ -133,7 +131,7 @@ module.exports = {
     // solution that requires the user to opt into importing specific locales.
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
   // Turn off performance hints during development because we don't do any
   // splitting or minification in interest of speed. These warnings become

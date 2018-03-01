@@ -14,7 +14,7 @@ import w from './w';
 export default {
   'amazon:effect': amazonEffectTag,
   audio,
-  'break': breakTag,
+  break: breakTag,
   emphasis,
   p,
   phoneme,

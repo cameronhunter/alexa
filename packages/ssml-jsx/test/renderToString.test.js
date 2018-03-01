@@ -30,7 +30,7 @@ test('Renders <break> tags as a string', () => {
   const speech = renderToString(
     <speak>
       <s>Hello world</s>
-      <break time='2s' />
+      <break time="2s" />
     </speak>
   );
 
@@ -40,7 +40,7 @@ test('Renders <break> tags as a string', () => {
 test('Renders <say-as> tags as a string', () => {
   const speech = renderToString(
     <speak>
-      <say-as interpret-as='characters'>Hello world</say-as>
+      <say-as interpret-as="characters">Hello world</say-as>
     </speak>
   );
 
@@ -50,7 +50,7 @@ test('Renders <say-as> tags as a string', () => {
 test('Renders <amazon:effect> tags as a string', () => {
   const speech = renderToString(
     <speak>
-      <amazon:effect name='whispered'>Hello world</amazon:effect>
+      <amazon:effect name="whispered">Hello world</amazon:effect>
     </speak>
   );
 
@@ -62,7 +62,7 @@ test('Only renders outer <speak> tags', () => {
     <speak>
       <s>Hello</s>
       <speak>
-          <s>world</s>
+        <s>world</s>
       </speak>
     </speak>
   );
@@ -72,7 +72,7 @@ test('Only renders outer <speak> tags', () => {
 
 test('Renders custom tags', () => {
   // eslint-disable-next-line
-  const Verbose = (props) => props.verbose ? props.children : null;
+  const Verbose = (props) => (props.verbose ? props.children : null);
 
   const speech = renderToString(
     <speak>

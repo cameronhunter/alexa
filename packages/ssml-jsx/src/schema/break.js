@@ -9,12 +9,12 @@ import PropTypes from 'prop-types';
 import { match, none } from '../custom-prop-types';
 
 const Strengths = [
-  'none',     // No pause should be outputted. This can be used to remove a pause that would normally occur (such as after a period).
-  'x-weak',   // No pause should be outputted (same as none).
-  'weak',     // Treat adjacent words as if separated by a single comma (equivalent to medium).
-  'medium',   // Treat adjacent words as if separated by a single comma.
-  'strong',   // Make a sentence break (equivalent to using the <s> tag).
-  'x-strong'  // Make a paragraph break (equivalent to using the <p> tag).
+  'none', // No pause should be outputted. This can be used to remove a pause that would normally occur (such as after a period).
+  'x-weak', // No pause should be outputted (same as none).
+  'weak', // Treat adjacent words as if separated by a single comma (equivalent to medium).
+  'medium', // Treat adjacent words as if separated by a single comma.
+  'strong', // Make a sentence break (equivalent to using the <s> tag).
+  'x-strong' // Make a paragraph break (equivalent to using the <p> tag).
 ];
 
 export default {

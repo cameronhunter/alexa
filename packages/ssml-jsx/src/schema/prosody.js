@@ -11,10 +11,7 @@ import { match } from '../custom-prop-types';
 export default {
   type: 'prosody',
   propTypes: {
-    rate: PropTypes.oneOfType([
-      PropTypes.oneOf(['x-slow', 'slow', 'medium', 'fast', 'x-fast']),
-      match(/[1-9][0-9]*%/)
-    ]),
+    rate: PropTypes.oneOfType([PropTypes.oneOf(['x-slow', 'slow', 'medium', 'fast', 'x-fast']), match(/[1-9][0-9]*%/)]),
     pitch: PropTypes.oneOfType([
       PropTypes.oneOf(['x-low', 'low', 'medium', 'high', 'x-high']),
       match(/[+-][1-9][0-9]*%/)

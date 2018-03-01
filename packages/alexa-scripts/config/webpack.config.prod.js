@@ -14,10 +14,7 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: 'source-map',
   // In production, we only want to load the polyfills and the app code.
-  entry: [
-    require.resolve('babel-polyfill'),
-    paths.appMain
-  ],
+  entry: [require.resolve('babel-polyfill'), paths.appMain],
 
   target: 'node',
 
@@ -46,7 +43,7 @@ module.exports = {
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc),
+      new ModuleScopePlugin(paths.appSrc)
     ]
   },
   module: {
@@ -59,17 +56,19 @@ module.exports = {
       {
         test: /\.js$/,
         enforce: 'pre',
-        use: [{
-          options: {
-            formatter: eslintFormatter,
-            baseConfig: {
-              extends: [require.resolve('eslint-config-alexa-app')]
+        use: [
+          {
+            options: {
+              formatter: eslintFormatter,
+              baseConfig: {
+                extends: [require.resolve('eslint-config-alexa-app')]
+              },
+              ignore: false,
+              useEslintrc: false
             },
-            ignore: false,
-            useEslintrc: false
-          },
-          loader: require.resolve('eslint-loader')
-        }],
+            loader: require.resolve('eslint-loader')
+          }
+        ],
         include: paths.appSrc
       },
 
@@ -81,7 +80,7 @@ module.exports = {
         options: {
           babelrc: false,
           presets: [require.resolve('babel-preset-alexa-app')]
-        },
+        }
       }
     ]
   },

@@ -8,7 +8,7 @@ export default function ssml({ elementName: tagName, attributes: props, children
   PropTypes.checkPropTypes(tag.propTypes, { ...mergedProps, children }, 'prop', tagName);
 
   return { elementName: tag.type, attributes: mergedProps, children };
-};
+}
 
 function throwIfUndefined(item, error) {
   if (!item) {
@@ -20,11 +20,11 @@ function throwIfUndefined(item, error) {
 
 function getTagDefinition(tag) {
   switch (typeof tag) {
-  case 'string':
-    return schema[tag];
-  case 'function':
-    return { ...tag, type: tag };
-  default:
-    return undefined;
+    case 'string':
+      return schema[tag];
+    case 'function':
+      return { ...tag, type: tag };
+    default:
+      return undefined;
   }
 }

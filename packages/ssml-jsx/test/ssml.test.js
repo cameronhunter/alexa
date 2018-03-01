@@ -6,14 +6,15 @@ test('creates an object containing a type key', () => {
 });
 
 test('creates an object containing type and props keys', () => {
-  const speech = (<break strength='medium' />);
+  const speech = <break strength="medium" />;
   expect(speech).toMatchSnapshot();
 });
 
 test('handles custom tags', () => {
   // eslint-disable-next-line
-  const Format = (props) => Object.entries(props).reduce((state, [k, v]) => state.replace('{' + k + '}', v), props.template);
-  const speech = (<Format template='Hello {name}' name='world' />);
+  const Format = (props) =>
+    Object.entries(props).reduce((state, [k, v]) => state.replace('{' + k + '}', v), props.template);
+  const speech = <Format template="Hello {name}" name="world" />;
   expect(speech).toMatchSnapshot();
 });
 

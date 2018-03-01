@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 
 const appRootDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appRootDirectory, relativePath);
+const resolveApp = (relativePath) => path.resolve(appRootDirectory, relativePath);
 const appPackageJson = resolveApp('package.json');
 const { main: appMain } = require(appPackageJson);
 const appBuildDirectory = resolveApp('build');

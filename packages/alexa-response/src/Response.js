@@ -9,20 +9,28 @@ export default class Response {
   static shouldEndSession = (...args) => new Response().shouldEndSession(...args);
   static directives = (...args) => new Response().directives(...args);
 
-  static build = (params) => Object.keys(params).reduce((response, action) => {
-    const options = params[action];
-    const text = typeof options === 'string' ? options : options;
-    const type = typeof options === 'string' ? undefined : options.type;
-    switch (action) {
-    case 'ask': return response.ask(text, type);
-    case 'say': return response.say(text, type);
-    case 'reprompt': return response.reprompt(text, type);
-    case 'card': return response.card(options);
-    case 'attributes': return response.attributes(options);
-    case 'shouldEndSession': return response.shouldEndSession(options);
-    case 'directives': return response.directives(options);
-    }
-  }, new Response());
+  static build = (params) =>
+    Object.keys(params).reduce((response, action) => {
+      const options = params[action];
+      const text = typeof options === 'string' ? options : options;
+      const type = typeof options === 'string' ? undefined : options.type;
+      switch (action) {
+        case 'ask':
+          return response.ask(text, type);
+        case 'say':
+          return response.say(text, type);
+        case 'reprompt':
+          return response.reprompt(text, type);
+        case 'card':
+          return response.card(options);
+        case 'attributes':
+          return response.attributes(options);
+        case 'shouldEndSession':
+          return response.shouldEndSession(options);
+        case 'directives':
+          return response.directives(options);
+      }
+    }, new Response());
 
   constructor(state = {}) {
     this.state = state;
@@ -60,7 +68,7 @@ export default class Response {
         ...this.state.response,
         card: {
           ...rest,
-          ...(type && { type }),
+          ...(type && { type })
         }
       }
     });
@@ -106,14 +114,16 @@ export default class Response {
         shouldEndSession: true,
         ...this.state.response
       },
-      ...(attributes || this.state.sessionAttributes ? { sessionAttributes: { ...attributes, ...this.state.sessionAttributes } } : null)
+      ...(attributes || this.state.sessionAttributes
+        ? { sessionAttributes: { ...attributes, ...this.state.sessionAttributes } }
+        : null)
     };
   }
 }
 
 const outputSpeech = (text, type = SpeechType.PlainText) => {
   if (type === SpeechType.SSML || typeof text === 'object') {
-    const speech = (typeof text === 'object') ? renderToString(text) : text;
+    const speech = typeof text === 'object' ? renderToString(text) : text;
     return { outputSpeech: { type: SpeechType.SSML, ssml: speech } };
   } else {
     return { outputSpeech: { type, text } };

@@ -10,7 +10,7 @@ const plugins = [
     require.resolve('babel-plugin-transform-object-rest-spread'),
     {
       useBuiltIns: true
-    },
+    }
   ],
 
   // Add export extensions
@@ -20,9 +20,9 @@ const plugins = [
   [
     require.resolve('babel-plugin-transform-jsx'),
     {
-      'module': 'ssml-jsx',
-      'function': 'ssml',
-      'useVariables': true
+      module: 'ssml-jsx',
+      function: 'ssml',
+      useVariables: true
     }
   ],
 
@@ -33,7 +33,7 @@ const plugins = [
       helpers: false,
       polyfill: false,
       regenerator: true
-    },
+    }
   ],
 
   // function* () { yield 42; yield 43; }
@@ -42,11 +42,11 @@ const plugins = [
     {
       // Async functions are converted to generators by babel-preset-env
       async: false
-    },
+    }
   ],
 
   // Adds syntax support for import()
-  require.resolve('babel-plugin-syntax-dynamic-import'),
+  require.resolve('babel-plugin-syntax-dynamic-import')
 
   // Convert exports to commonjs
   // require.resolve('babel-plugin-add-module-exports'),

@@ -7,15 +7,11 @@ const isControlRequest = (...names) => (event = {}) => {
   return namespace === ConnectedHome.Control && (!names.length || names.indexOf(name) >= 0);
 };
 
-export const ControlRequest = (name, transform) => annotation(
-    isControlRequest(name),
-    (transform || (({ payload = {} }) => [payload]))
-);
+export const ControlRequest = (name, transform) =>
+  annotation(isControlRequest(name), transform || (({ payload = {} }) => [payload]));
 
-export default (...names) => annotation(
-    isControlRequest(...names),
-    ({ header = {}, payload = {} }) => {
-      const { appliance = {} } = payload;
-      return [appliance.applianceId, header.name, payload];
-    }
-);
+export default (...names) =>
+  annotation(isControlRequest(...names), ({ header = {}, payload = {} }) => {
+    const { appliance = {} } = payload;
+    return [appliance.applianceId, header.name, payload];
+  });

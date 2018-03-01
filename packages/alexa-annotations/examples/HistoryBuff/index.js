@@ -6,12 +6,25 @@ import ssml from 'ssml-jsx';
 const { ask, say } = Response;
 
 const PaginationSize = 3;
-const MonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const IntroText = 'With History Buff, you can get historical events for any day of the year. For example, you could say today, or August thirtieth. Now, which day do you want?';
+const MonthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+const IntroText =
+  'With History Buff, you can get historical events for any day of the year. For example, you could say today, or August thirtieth. Now, which day do you want?';
 
 @Skill
 export default class HistoryBuff {
-
   constructor(attributes = {}) {
     this.result = attributes.result;
     this.index = attributes.index;
@@ -40,25 +53,29 @@ export default class HistoryBuff {
     const monthName = MonthNames[date.getMonth()];
     const cardTitle = `Events on ${monthName} ${date.getDate()}`;
 
-    return wikipedia(monthName, date.getDate()).then(result => {
-      const events = result.slice(0, PaginationSize);
-      const speechText = events.reduce((state, event) => `<p>${state}${event}</p>`, '');
+    return wikipedia(monthName, date.getDate())
+      .then((result) => {
+        const events = result.slice(0, PaginationSize);
+        const speechText = events.reduce((state, event) => `<p>${state}${event}</p>`, '');
 
-      return Response.build({
-        ask: (
-          <speak>
-            <p>For {monthName} {date.getDate()},</p>
-            {speechText}
-            <p>Wanna go deeper in history?</p>
-          </speak>
-        ),
-        card: { title: cardTitle, content: `For ${monthName} ${date.getDate()}, ${events.join(' ')}` },
-        reprompt: IntroText,
-        attributes: { result, index: PaginationSize }
+        return Response.build({
+          ask: (
+            <speak>
+              <p>
+                For {monthName} {date.getDate()},
+              </p>
+              {speechText}
+              <p>Wanna go deeper in history?</p>
+            </speak>
+          ),
+          card: { title: cardTitle, content: `For ${monthName} ${date.getDate()}, ${events.join(' ')}` },
+          reprompt: IntroText,
+          attributes: { result, index: PaginationSize }
+        });
+      })
+      .catch((error) => {
+        return say(error).card(cardTitle, error);
       });
-    }).catch(error => {
-      return say(error).card(cardTitle, error);
-    });
   }
 
   @Intent('GetNextEventIntent')
@@ -67,13 +84,22 @@ export default class HistoryBuff {
     const repromptText = 'Do you want to know more about what happened on this date?';
 
     if (!this.result) {
-      return ask(IntroText).card({ title: cardTitle, content: IntroText }).reprompt(repromptText);
+      return ask(IntroText)
+        .card({ title: cardTitle, content: IntroText })
+        .reprompt(repromptText);
     }
 
     if (this.index >= this.result.length) {
-      return ask('There are no more events for this date. Try another date by saying <break time="0.3s"/> get events for august thirtieth.', 'SSML')
-              .card({ title: cardTitle, content: 'There are no more events for this date. Try another date by saying, get events for august thirtieth.' })
-              .reprompt(repromptText);
+      return ask(
+        'There are no more events for this date. Try another date by saying <break time="0.3s"/> get events for august thirtieth.',
+        'SSML'
+      )
+        .card({
+          title: cardTitle,
+          content:
+            'There are no more events for this date. Try another date by saying, get events for august thirtieth.'
+        })
+        .reprompt(repromptText);
     }
 
     const index = this.index + PaginationSize;
@@ -82,10 +108,15 @@ export default class HistoryBuff {
     const speechText = events.reduce((state, event) => `<p>${state}${event}</p>`, '');
     const cardContent = events.join(' ');
 
-    return ask(<speak>{speechText}{moreContent ? ' Wanna go deeper in history?' : ''}</speak>)
-            .card({ title: cardTitle, content: cardContent + (moreContent ? ' Wanna go deeper in history?' : '') })
-            .reprompt(repromptText)
-            .attributes({ result: this.result, index });
+    return ask(
+      <speak>
+        {speechText}
+        {moreContent ? ' Wanna go deeper in history?' : ''}
+      </speak>
+    )
+      .card({ title: cardTitle, content: cardContent + (moreContent ? ' Wanna go deeper in history?' : '') })
+      .reprompt(repromptText)
+      .attributes({ result: this.result, index });
   }
 
   @Intent('AMAZON.CancelIntent', 'AMAZON.StopIntent')
@@ -97,5 +128,4 @@ export default class HistoryBuff {
   help() {
     return ask(IntroText).reprompt('Which day do you want?');
   }
-
 }
