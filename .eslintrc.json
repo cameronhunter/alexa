@@ -12,9 +12,6 @@
     "fetch": true
   },
   "rules": {
-    "indent": ["error", 2],
-    "semi": ["error", "always"],
-    "quotes": ["error", "single"],
     "no-undef": ["error"],
     "no-unused-vars": ["error", { "varsIgnorePattern": "^ssml$", "args": "after-used" }]
   }
